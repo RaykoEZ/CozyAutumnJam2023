@@ -1,30 +1,15 @@
-﻿# The script of the game goes in this file.
+﻿define p = Character("[povName]")
+define k = Character("Kaguya")
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
-
-# The game starts here.
+label playerName:
+    python:
+        povName = renpy.input("What is your name?", length=16)
+        povName = povName.strip()
+        if not povName:
+            povName = "Name"
+    return
 
 label prologue:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
-    scene bg room
-
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    show eileen happy
-
-    # These display lines of dialogue.
-
-    e "You've created a new Ren'Py game."
-
-    e "Once you add a story, pictures, and music, you can release it to the world!"
-
-    # This ends the game.
-
+    call playerName
+    "[povName], it is time to begin your story."
     return
