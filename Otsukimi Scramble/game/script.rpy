@@ -8,7 +8,7 @@ label start:
     scene black
     call prologue
     # These display lines of dialogue.
-    
+    call chapter1
+    call chapter2
     # This ends the game.
-
     return
