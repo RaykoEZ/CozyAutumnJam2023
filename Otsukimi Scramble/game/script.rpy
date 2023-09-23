@@ -6,9 +6,9 @@
 
 label start:
     scene black
-    call prologue
+    call prologue from _call_prologue
     # These display lines of dialogue.
-    call chapter1
-    call chapter2
+    call chapter1 from _call_chapter1
+    call chapter2 from _call_chapter2
     # This ends the game.
     return

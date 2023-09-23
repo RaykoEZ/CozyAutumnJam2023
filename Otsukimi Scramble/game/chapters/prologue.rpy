@@ -10,6 +10,6 @@ label playerName:
     return
 
 label prologue:
-    call playerName
+    call playerName from _call_playerName
     "[povName], it is time to begin your story."
     return
