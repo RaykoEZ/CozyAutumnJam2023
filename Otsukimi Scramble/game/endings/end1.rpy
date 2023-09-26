@@ -1,4 +1,5 @@
 label end1:
+    
     # bad end, depend on affinity, slightly different different
     if affinity > 0:
         call end1_better

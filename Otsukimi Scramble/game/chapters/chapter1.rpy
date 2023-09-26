@@ -1,3 +1,4 @@
+# TODO: Flesh out dialogue in chapter 1
 label chapter1:
     scene field evening with dissolve
     "Cultivating silver grass"

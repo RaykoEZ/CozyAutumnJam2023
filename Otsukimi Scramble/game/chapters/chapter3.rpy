@@ -1,3 +1,4 @@
+# TODO: Flesh out dialogue in chapter 3
 label chapter3:
     "As we sit in front of the "
     "Where should we start?"

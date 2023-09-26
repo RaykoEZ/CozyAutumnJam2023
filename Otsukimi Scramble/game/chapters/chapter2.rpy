@@ -1,3 +1,4 @@
+# TODO: Flesh out dialogue in chapter 2
 label chapter2:
     scene black with dissolve
     "We ran as fast as we could"
