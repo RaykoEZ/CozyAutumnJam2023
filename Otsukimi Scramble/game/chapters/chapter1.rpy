@@ -22,18 +22,18 @@ label chapter1:
     p "Hmm...what is this"
     p "A... girl?"
     # awkward
-    show kag norm
+    show kag awkward
     k "Haha, sorry"
     "She approaches"
     "Silence"
     p "Sorry nope"
     # scream
     # struggle
-    show kag norm
+    show kag surprise
     k "Hey please wait"
     p "Nope"
     # scream
-    show kag norm
+    show kag sad
     k "please, i'll be in trouble"
     p "i'll be in bigger trouble"
     p "I don't even know you"
@@ -43,12 +43,12 @@ label chapter1:
     "Both tired"
     p "Just let go and we get out of here first"
     # surprise
-    show kag norm
+    show kag surprise
     # happy
-    show kag norm
+    show kag happy
     k "Yes let's"
     return
 
-# secret ending route
+#TODO:secret ending route
 label chapter1x:
     return
