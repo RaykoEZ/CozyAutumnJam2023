@@ -17,6 +17,7 @@ label inquisitorEncounter:
     scene shrine night
     #TODO: Flesh out decisions on encounter with Inquisitor
     call questioning1
+    inquisitor "You better know what you are talking about. I don't take kindly to slanders."
     call questioning2
     # if player presents silvergrass to the inquisitor (trap), trigger a sacrifice route
     if giveGrass:
@@ -40,8 +41,7 @@ menu questioning1:
 # if you give grass, inquisitor will scarifice himself
 
 menu questioning2:
-    inquisitor "You better know what you are talking about. I don't take kindly to slanders."
-    "What should I do?"
+    "What should I do next?"
     "Let Kaguya handle this": 
         return
     "Reveal the Inquisitor's motives":
