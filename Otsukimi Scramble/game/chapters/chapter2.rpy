@@ -1,3 +1,4 @@
+# TODO: Flesh out dialogue in chapter 2
 label chapter2:
     scene black with dissolve
     "We ran as fast as we could"
@@ -6,7 +7,7 @@ label chapter2:
     p "okay, we should be okay"
     p "And I shall take my leave-"
     # surprise
-    show kag norm
+    show kag surprise
     k "Hey, you promised"
     p "..."
     call decideToHelp
@@ -20,7 +21,7 @@ label decideToHelp:
         # refuse to help
         "No, this is all too much":           
             # sad/frown
-            show kag norm
+            show kag sad
             k "..."
             "pleading eyes"
             menu:
@@ -28,9 +29,7 @@ label decideToHelp:
                 "Fine I'll help":
                     call chapter2_1
                 "No":
-                    call chapter2_2
-
-            
+                    call chapter2_2           
     return
 
 label chapter2_1:
@@ -38,11 +37,11 @@ label chapter2_1:
     p "tell me about yourself"
     k "about yourself"
     p "tell me what your mission is"
-    k "my mission"
+    k "my mission - inquisitor"
     return
 
 label chapter2_2:
     
-
+    "No help"
     $ refuseToHelp = True;
     return
