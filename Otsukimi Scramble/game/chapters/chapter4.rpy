@@ -109,7 +109,7 @@ label chapter4_Room:
 label chapter4_Lost:
     scene black with dissolve
     show kag shadow
-    """As night is approaching its end, Kaguya moves out on her own, desperately searching for any traces of the Moon Rabbit.
+    """As night is approaching its end, Kaguya leaves on her own, desperately searching for any traces of the Moon Rabbit.
     
     Afterall, she stands to lose everything if she fails this.
 
