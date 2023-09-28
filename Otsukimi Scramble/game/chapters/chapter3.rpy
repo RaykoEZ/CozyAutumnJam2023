@@ -49,7 +49,7 @@ label chapter3_shrine:
     
     A few of them should be staying at the dwelling behind of the sanctuary.   
 
-    I'll need to report the damages on the silvergrass as soon as possible
+    I'll need to report the damages on the silver-grass as soon as possible
     
     Maybe we can find some clues about this Moon Rabbit.""" 
     # clue triggers

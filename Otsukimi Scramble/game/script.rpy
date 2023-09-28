@@ -3,7 +3,7 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 # The game starts here.
-
+# TODO: Secret ending check
 label start:
     # Check for clue 1 to see if we choose to go to shrine
     scene black
@@ -14,7 +14,7 @@ label start:
     # check for chapter 2 decision
     if refuseToHelp:
         # Lied to Kaguya, go to bad version of end 1.
-        $ affinity -= 1
+        $ affinity -= 1 
         jump end1
     else:
         call chapter3
@@ -25,8 +25,6 @@ label start:
     "Kaguya is getting restless, we need to make a move."
     k "C'mon! Do we know where to find this bugger?"
     jump chooseDestination
-
-
     # This ends the game.
     return
 
@@ -96,9 +94,9 @@ label thinking:
     # trap check
     if needSilverGrass:
         """
-        This year's Moon Festival is cancelled due to poor weather, in addition to the sudden devestation of our silvergrass harvest, as witnessedInquisitored by yours truly.    
+        This year's Moon Festival is cancelled due to poor weather, in addition to the sudden devestation of our silver grass harvest, as witnessedInquisitored by yours truly.    
     
-        Luckily, I have some silvergrass as decoration. It might come in handy when we confront this Inquisitor.
+        Luckily, I have some silver-grass as decoration. It might come in handy when we confront this Inquisitor.
         """
 
     # trap warning

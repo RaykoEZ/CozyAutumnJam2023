@@ -1,22 +1,18 @@
 label end1:
     scene black with dissolve
-    "A year passes since my brief time with Kaguya."
-    show kag shadow
-    "I haven't seen the girl after the night we'd gone our separate ways..."
-    hide kag with dissolve
-    "after failing to find her treasure in time."
+    "I was met with the police on the next day."
     scene field evening with dissolve
-    "Kaguya and I had left footprints as we exited the park, causing police investigators to contact me for questioning."
-    "Fortunately, I was soon released as the police failed to find my \"accomplice\", and lacked evidence to keep me locked up."
+    "Kaguya and I had left footprints at our first meeting; it was no surprise they would ask questions."
+    "Fortunately, I was soon released as the police failed to find my \"accomplice\"."
     scene clear sky with dissolve
-    """I returned to my daily life of school assignments and working on odd jobs.
+    "I haven't seen Kaguya after the night we'd gone our separate ways."
+    """
+    Day by day,
     
-    Day by day
-    
-    Week by week
+    Week by week.
     """
     scene black with dissolve
-    show kag shadow
+    show kag shadow with dissolve
     "The memories of that day fades away."
     hide kag with dissolve
     scene end1 with dissolve
@@ -63,7 +59,8 @@ label end1_better:
     k "?"
     scene end1 better with fade
     k "[povName]?"
-    P "Kaguya!? Where have you been?"
+    P "Kaguya!?" 
+    p "Where have you been? What happened that night?"
     "As I speak, fear and guilt freeze my conciousness."
     k "It's a pretty long story~"
     k "Wanna chat over some tea and snacks? I found a nice place~"

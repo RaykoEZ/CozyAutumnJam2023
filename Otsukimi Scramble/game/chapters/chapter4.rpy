@@ -15,13 +15,24 @@ label chapter4_Park:
     jump inquisitorEncounter
 
 label inquisitorEncounter:
-    scene shrine night
+    scene shrine night with dissolve
+    show kag awkward with dissolve
+
     #TODO: Flesh out decisions on encounter with Inquisitor
     call questioning1
     inquisitor "You better know what you are talking about. I don't take kindly to slanders."
     call questioning2
     # if player presents silvergrass to the inquisitor (trap), trigger a sacrifice route
     if giveGrass:
+        inquisitor "That's-"
+        "The rabbit's demeanour shifts from contempt to shock as I take a tuft of silver-grass out of my pocket."        
+        inquisitor "It seems I was mistaken about you two."
+        p "?"
+        inquisitor """I must thank you for acquiring such fine specimens, 
+        
+        despite what the dimwit next to you did to the flowerbeds today.
+        
+        I will be taking this now."""
         jump inquisitorSacrifice
     # good end
     if inquisitorScore > 1:
@@ -37,7 +48,7 @@ menu questioning1:
     "We heard about a suspicious individual...":
         $ inquisitorScore -= 1
         return 
-    "Just Sightseeing.":
+    "Just sightseeing.":
         return
 # if you give grass, inquisitor will scarifice himself
 
@@ -48,17 +59,37 @@ menu questioning2:
     "Reveal the Inquisitor's motives":
         return 
     # activate trap if player brought grass to the showdown
-    "Present the silvergrass" if hasGrass:
+    "Present the silver-grass" if hasGrass:
         $ giveGrass = True
         return
 
 # When you fail the questioning
 label inquisitorReject:
-    jump end1
+    scene shrine night with fade
+    inquisitor "I've heard enough."
+    jump inquisitorSacrifice
 # Trigger Trap Bad Ending
 label inquisitorSacrifice:
-    jump end1
+    scene shrine night:
+        zoom 1.5 
+    with vpunch
+    show kag surprise
+    "With a blink of an eye, "
+    p "What!?"
+    "a tremendous force knocks me off balance"
+    show kag shadow with fade
+    "Following a streak of sharp pain as I hit the stone tiles,
+    sending me tumbling down the staircase."
+    scene black with fade
+    k "[povName]!"
+    hide kag with fade
+    """The events of that night was a blur.   
 
+    The staff mentioned a girl in tears, carrying me into the emergency ward at dawn; it was probably Kaguya.
+
+    Where did she go?
+    """
+    jump end1
 # Head to Lost
 label chapter4_Store:
     scene shop with dissolve
@@ -88,7 +119,7 @@ label chapter4_Room:
     
     Everything about today was exhausting.
 
-    School assignments, work, a crash-landed alien girl, destroying my fruits of labor...
+    School assignments, work, a crash-landed alien girl, destroying my fruits of labour...
     
     and dragging me into her mess... 
     
