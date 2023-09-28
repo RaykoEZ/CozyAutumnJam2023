@@ -42,14 +42,9 @@ label end1_bad:
     "What has she been doing since then?"
 
     "But,"
-
-    "It has nothing to do with me."
-
-    "She's just a stranger..."
-
-    "...we had only met once."
     scene black with dissolve
     "I shake off the thoughts and rush past the girl."
+    "I have no business with her anymore."
     #show ending text
     "Ending 1 - Rejection"
     return

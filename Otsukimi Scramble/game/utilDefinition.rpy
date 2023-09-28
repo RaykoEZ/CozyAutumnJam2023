@@ -1,3 +1,12 @@
+
+transform screenShake:
+    linear 0.1 xoffset -2 yoffset 2 
+    linear 0.1 xoffset 3 yoffset -3 
+    linear 0.1 xoffset 2 yoffset -2
+    linear 0.1 xoffset -3 yoffset 3
+    linear 0.1 xoffset 0 yoffset 0
+    repeat
+
 #set all python init variables here
 init python:
     import os
@@ -35,8 +44,6 @@ default identityKnown = False
 default witnessedInquisitor = False
 # where to go after chapter 3
 default locationKnown = False
-# red herring - history of immortality
-default immortality = False
 # tales of sacrifice, needed for secret unlock
 default talesOfSacrifce = False
 # score for the inquisitor decision at chapter 4

@@ -102,10 +102,9 @@ label chapter4_Store:
     scene sky night with dissolve
     "Hours went by, we did not see anyone of interest."
     show kag awkward
-    clerk "Oh, you two still here?"
+    clerk "You two still here?"
     "The store clerk came out the back door, probably coming off his shift."
-    p "Yeah, our friend is running a bit late."
-    clerk "Ah, it's getting a bit chilly outside, you're welcome to wait in our seating area."
+    clerk "It's getting a bit chilly outside, you're welcome to wait inside."
     p "Thanks for the offer, we'll go in a minute."
     scene black with dissolve
     "In the end, no one, except a few night owls, came into the store."

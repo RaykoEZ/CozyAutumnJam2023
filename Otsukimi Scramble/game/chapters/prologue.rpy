@@ -11,5 +11,4 @@ label playerName:
 
 label prologue:
     call playerName from _call_playerName
-    "[povName], it is time to begin your story."
     return
