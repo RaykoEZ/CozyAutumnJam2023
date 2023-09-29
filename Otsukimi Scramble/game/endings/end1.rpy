@@ -1,7 +1,22 @@
 label end1:
     scene black with dissolve
-    "I was met with the police on the next day."
+    if giveGrass:
+        """The events of that night was a blur.   
+
+        The staff mentioned a girl in tears, carrying me into the emergency ward at dawn; it was probably Kaguya.
+
+        Where did she go?
+        """
+    else:
+        """An uneventful night goes by.
+        
+        Focusing on the gentle pattering of the rain, 
+        
+        worn out by the events I encountered today, 
+        
+        I soon drift off into sleep."""
     scene field evening with dissolve
+    "I was met with the police on the next day."
     "Kaguya and I had left footprints at our first meeting; it was no surprise they would ask questions."
     "Fortunately, I was soon released as the police failed to find my \"accomplice\"."
     scene clear sky with dissolve
@@ -16,7 +31,7 @@ label end1:
     "The memories of that day fades away."
     hide kag with dissolve
     scene end1
-    p "!"
+    p "Huh?"
     "That hood!"
     "Could it be her?!"
     scene end1: 

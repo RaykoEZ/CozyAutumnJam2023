@@ -20,7 +20,7 @@ label start:
     else:
         call chapter3
     # Night begins, need to head to final destination
-    "The sun has set, the Moon's Treasure will emerge at midnight"
+    "The sun has set, we don't have much time left."
     # panic/worry/frown
     show kag surprise
     "Kaguya is getting restless, we need to make a move."

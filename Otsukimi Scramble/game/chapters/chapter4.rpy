@@ -83,12 +83,6 @@ label inquisitorSacrifice:
     scene black with fade
     k "[povName]!"
     hide kag with fade
-    """The events of that night was a blur.   
-
-    The staff mentioned a girl in tears, carrying me into the emergency ward at dawn; it was probably Kaguya.
-
-    Where did she go?
-    """
     jump end1
 # Head to Lost
 label chapter4_Store:
@@ -100,11 +94,13 @@ label chapter4_Store:
     "I enter the store, Kaguya stays outside to look out for the Inquisitor."
     "Come to think of it, I'm getting a bit peckish, I hope they haven't thrown away the sandwiches yet."
     scene sky night with dissolve
-    "Hours went by, we did not see anyone of interest."
+    "Hours went by, no one of interest."
+    "Worst of all, it began to drizzle."
+    #rain sfx
     show kag awkward
     clerk "You two still here?"
     "The store clerk came out the back door, probably coming off his shift."
-    clerk "It's getting a bit chilly outside, you're welcome to wait inside."
+    clerk "It's , you're welcome to wait inside."
     p "Thanks for the offer, we'll go in a minute."
     scene black with dissolve
     "In the end, no one, except a few night owls, came into the store."

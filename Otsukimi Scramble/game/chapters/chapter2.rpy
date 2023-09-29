@@ -45,8 +45,6 @@ label decideToHelp:
         "No, this is too much for me.":           
             # sad/frown
             show kag sad
-            k "..."
-            "pleading eyes"
             menu:
                 "..."
                 "Fine I'll help":
@@ -62,9 +60,18 @@ label chapter2_1:
     p "tell me what your mission is"
     k "my mission - inquisitor"
     return
-
+#refuse to help kaguya
 label chapter2_2:
-    
-    "No help"
-    $ refuseToHelp = True;
+    p "I am sorry but I cannot help you any further."
+    show kag surprise
+    k "..."
+    p "The shrine workers can help you more than I can."
+    show kag norm
+    k "Okay, I understand."
+    show kag awkward
+    k "I'm sorry we have to meet in such a way."    
+    $ refuseToHelp = True
+    hide kag with fade
+    scene clear sky with dissolve
+    "Kagari and I parted ways."
     return
