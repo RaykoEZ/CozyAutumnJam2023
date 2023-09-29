@@ -15,7 +15,7 @@ label end1:
     show kag shadow with dissolve
     "The memories of that day fades away."
     hide kag with dissolve
-    scene end1 with dissolve
+    scene end1
     p "!"
     "That hood!"
     "Could it be her?!"
@@ -50,24 +50,21 @@ label end1_bad:
     return
 
 label end1_better:
-    scene end1
+    scene end1 base with fade
     k "?"
-    scene end1 better with fade
+    scene end1 surprise with fade
+    p "Kaguya!?"
     k "[povName]?"
-    P "Kaguya!?" 
-    p "Where have you been? What happened that night?"
-    "As I speak, fear and guilt freeze my conciousness."
-    k "It's a pretty long story~"
+    scene end1 wave with fade
+    k "Long time no see~"
     k "Wanna chat over some tea and snacks? I found a nice place~"
+    k "And...I'll pay for the food this time~"
     p "..."
-    k "Oh don't worry, I'll pay for my food!"
     # grey overlay for monologue
     """There were too many questions I wish to ask her.
     
-    Yet here she is, in front of me.
-
-    And I cannot look her in the eye."""
+    Yet here she is, in front of me."""
     #show ending text
     scene black with dissolve
-    "Ending 1 - Rejection & Acceptance"
+    "Ending 1 - Acceptance"
     return

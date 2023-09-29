@@ -2,7 +2,9 @@
 label chapter2:
     scene black with dissolve
     "We ran as fast as we could"
-    scene shrine hill evening with dissolve
+    scene shrine hill evening:
+        zoom 3.0
+    with dissolve
     show kag norm
     p "okay, we should be okay"
     p "And I shall take my leave-"

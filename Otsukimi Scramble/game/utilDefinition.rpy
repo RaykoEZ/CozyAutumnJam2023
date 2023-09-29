@@ -1,12 +1,3 @@
-
-transform screenShake:
-    linear 0.1 xoffset -2 yoffset 2 
-    linear 0.1 xoffset 3 yoffset -3 
-    linear 0.1 xoffset 2 yoffset -2
-    linear 0.1 xoffset -3 yoffset 3
-    linear 0.1 xoffset 0 yoffset 0
-    repeat
-
 #set all python init variables here
 init python:
     import os
@@ -60,3 +51,11 @@ default hasGrass = False
 default giveGrass = False
 # ------------------IT'S A TRAP---------
 
+image kag awkward closeup:
+    "images/kaguya/kag awkward.png"
+    anchor (540, 1080)
+    zoom 2
+image kag surprise closeup:
+    "images/kaguya/kag surprise.png"
+    anchor (540, 1080)
+    zoom 2
