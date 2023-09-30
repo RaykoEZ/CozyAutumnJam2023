@@ -4,7 +4,10 @@ label chapter2:
     scene shrine hill evening:
         zoom 3.0
     with dissolve
-    "Once we safely reached the foot of the stairs leading to H. Shrine, I breath a sign of relief."
+    """Once we safely reached the foot of the stairs leading to T. Shrine, I breath a sign of relief.
+    
+    The soft rustling of fallen leaves and swaying branches bring me with a familiar feeling of serenity."""
+    
     p "We should be safe around here."
     "The Moon Festival takes place here tonight, so we should be able to blend in with the crowds."
     show kag norm
@@ -31,13 +34,12 @@ label chapter2:
     show kag angry with hpunch
     p "Aargh!"
     "My neck jerks back as she grips onto the back of my shirt collar and pulls me back."
-    "Looks like I won't be getting away easily."
     call decideToHelp
     # return to main
     return
 label decideToHelp:
     menu: 
-        "What should I do?"
+        "Looks like I won't be getting away easily."
         "Fine.":
             call chapter2_1
         # refuse to help
@@ -54,17 +56,30 @@ label decideToHelp:
 
 label chapter2_1:
     p "Fine, I'll help, but don't do anything reckless, the police are probably on edge after what you did."
+    p "My name is [povName]."
     # atl animation for excitement
     show kag shake with vpunch
-    k "Yes! Thank you!"
+    k "Yes Mr. [povName]! Thank you!"
     "Kaguya rigorously shakes my hands in excitement."
-    p "Alright, now stop tearing my limbs apart!"
+    p "[povName] is fine, now stop tearing my limbs apart!"
     show kag happy
-    k "Sorry about that~"
+    k "Ah Sorry about that~"
     "She sticks her tongue out mischievously."
     p "Hmph, so, what help do you need?"
+    show kag norm
     k "I am trying to find someone."
-    k "Someone very important."
+    show kag awkward
+    p "Any ideas of what the person looks like?"
+    show kag happy
+    k """Unfortunately, no.
+    
+    And that's why I need your help. 
+    
+    You are pretty accustomed to this place, right?
+    """
+    p "So you want to find someone you don't even recognize?"
+    p "I'm afraid I've no clue where to start."
+    
     #TODO: Finish Chapter 2_1 dialogue here
     return
 #refuse to help kaguya

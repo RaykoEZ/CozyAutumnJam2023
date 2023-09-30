@@ -5,7 +5,11 @@ label chapter1:
         zoom 3.0
     with fade  
     p "There, all done, this should be the last silver-grass bush for today."
-    "I stand up, letting the relaxing autumn breeze flow through my clothes."
+    """I stand up, arms stretched out, letting the refreshing breeze flow through my clothes.
+    
+    The humid summer air has long since dissipated.
+    
+    Today is a perfect time to be out in the fields"""
     p "We should have enough for tonight~"
     "Helping the silver-grass harvest for this year's Harvest Moon Festival has been a drag, to say the least."
     "We had a rough season for these little guys this year. I was worried we won't fill our baskets"
@@ -14,7 +18,7 @@ label chapter1:
     "I take a long stretch and lay down on the grass, staring blankly into the evening sky."
     p "There's nothing to worry about after all."
 
-    "As I doze off from cloud watching, a sudden twinkle in the sky catches my attention."
+    "Dozing off from cloud watching, a sudden twinkle in the sky catches my attention."
     p "Hm? A plane?"
     "But it seems too small for a plane, and it's too early to see any stars."
     scene clear sky:
