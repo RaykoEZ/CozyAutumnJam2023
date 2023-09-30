@@ -1,4 +1,3 @@
-# TODO: Flesh out dialogue in chapter 2
 label chapter2:
     scene black with dissolve
     "We ran as fast as we could."
@@ -54,11 +53,19 @@ label decideToHelp:
     return
 
 label chapter2_1:
-    k "ty"
-    p "tell me about yourself"
-    k "about yourself"
-    p "tell me what your mission is"
-    k "my mission - inquisitor"
+    p "Fine, I'll help, but don't do anything reckless, the police are probably on edge after what you did."
+    # atl animation for excitement
+    show kag shake with vpunch
+    k "Yes! Thank you!"
+    "Kaguya rigorously shakes my hands in excitement."
+    p "Alright, now stop tearing my limbs apart!"
+    show kag happy
+    k "Sorry about that~"
+    "She sticks her tongue out mischievously."
+    p "Hmph, so, what help do you need?"
+    k "I am trying to find someone."
+    k "Someone very important."
+    #TODO: Finish Chapter 2_1 dialogue here
     return
 #refuse to help kaguya
 label chapter2_2:
