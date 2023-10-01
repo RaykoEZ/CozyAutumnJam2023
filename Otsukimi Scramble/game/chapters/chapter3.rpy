@@ -27,16 +27,16 @@ menu chapter3_ChooseLocation:
         call chapter3_shop
         return
     "Search for clues on the internet":
-            p """Let's go to my place, 
-            
-            there should be records on the internet if your friend entered the Earth in a similar manner.
-            """
-            show kag surprise
-            k "Inta-net?"
-            "Ignoring her questioning gaze, I gesture her to follow my lead."
-            "A break from being outside all day, the timing cannot be better!"
-            p "Let's go back to my place, we have little time to waste!"
-            k "O-okay!"
+        p """Let's go to my place, 
+        
+        there should be records on the internet if your friend entered the Earth in a similar manner.
+        """
+        show kag surprise
+        k "Inta-net?"
+        "Ignoring her questioning gaze, I gesture her to follow my lead."
+        "A break from being outside all day, the timing cannot be better!"
+        p "Let's go back to my place, we have little time to waste!"
+        k "O-okay!"
         call chapter3_room
         return
 
