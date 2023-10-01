@@ -81,13 +81,14 @@ label chapter1:
     with vpunch 
     p "Let. Me. Go!"
     ufo "Calm down, I mean no harm!"
-    "Already tired from a day's work, I eventually gave up on escaping and accepted my fate."
+    "Already tired from a day's work, I eventually gave up on escaping."
     show kag norm
     ufo "Finally calmed down?"
-    ufo "My name's Kaguya. Let's get out of here before anyone comes."
-    k "And YOU are my guide! Agreed?"
-    p "..."
-    "Still nervous, I make my way out of the fields with Kaguya."
+    ufo "My name's Kaguya, I am a resident of the Moon!" 
+    ufo "Details later, let's get out of here before anyone comes."
+    k "Please show me the way!"
+    p "...sure"
+    "Still nervous, I make my way out of the fields with the girl."
     return
 
 #TODO:secret ending route

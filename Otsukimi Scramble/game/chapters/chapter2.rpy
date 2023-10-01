@@ -9,15 +9,8 @@ label chapter2:
     The soft rustling of fallen leaves and swaying branches bring me with a familiar feeling of serenity."""
     
     p "We should be safe around here."
-    "The Moon Festival takes place here tonight, so we should be able to blend in with the crowds."
-    show kag norm
-    """I was responsible for the silver-grass procurement. 
-
-    Thanks to this Kaguya girl's meteoric entrance, pulverizing most of the supplies planned for tonight. 
-
-    I'll need to report the damages to the organizers.
-    """
-    
+    "The Moon Festival takes place here tonight, so we should be able to blend in with the preparation staff."
+    show kag norm   
     k "Say, I still don't know your name."
     """She's still trying to drag me into her mess, this cannot be good.
     
@@ -69,18 +62,67 @@ label chapter2_1:
     show kag norm
     k "I am trying to find someone."
     show kag awkward
-    p "Any ideas of what the person looks like?"
-    show kag happy
-    k """Unfortunately, no.
-    
-    And that's why I need your help. 
-    
-    You are pretty accustomed to this place, right?
+    p "Any ideas of what this person might look like?"
+
+    show kag shake with hpunch
+    k """He's a forceful-yet-charming boss man. We used to call him the Inquisitor!
+
+    He might look like one of those muscular high schoolers with mysterious superpowers! 
     """
-    p "So you want to find someone you don't even recognize?"
-    p "I'm afraid I've no clue where to start."
-    
+    p "Uh-I'm afraid I've no clue where to start."
+    # Option on what to do next
+    show kag awkward
+    "Silence ensues as Kaguya leans against the railings by the stone steps, deep in thought."
+    k "Hmm..."
+    show kag angry
+    k "..."
+    menu:
+        "What we do next?"
+        "Go to the shrine":
+            """I need to report our silver-grass situation to the organizers at the shrine anyway.
+
+            There mght be some clues to the identity of this Inquisitor."""
+            p "We can ask the shrine workers. It's better than standing around here."
+            show kag norm
+            "She snaps out of her frustration and nods eagerly."
+            k "Let's! You lead the way!"
+            call chapter2_shrine
+        "Ask Kaguya about the Inquisitor":
+            show kag norm
+            p ""
+            
+        "Ask more about Kaguya":
+            show kag norm
+            p ""
+            
     #TODO: Finish Chapter 2_1 dialogue here
+    return
+
+define shrineStaff = Character("Shrine Staff")
+define shrineElder = Character("Shrine Elder")
+# go to shrine to ask for info
+label chapter2_shrine:
+    scene shrine hill evening:
+        zoom 3.0
+    with fade
+    """
+    Lucky for her, I'm an acquaintance of the workers in this shrine and a regular at the shrine. 
+    
+    A few of them should be staying at the dwelling behind of the sanctuary.
+    """
+    scene shrine evening:
+        zoom 3.0
+    with fade
+    "As we arrive at the entrance of the shrine, we are greeted by a shrine steward." 
+    shrineStaff "[povName]? Hey [povName]!"
+    shrineStaff "Good to see you here, how's tonight's harvest?"
+    p "Well, you see..."
+    shrineElder ""
+    # clue triggers
+    $ identityKnown = True
+    $ witnessedInquisitor = True
+    $ talesOfSacrifce = True
+
     return
 #refuse to help kaguya
 label chapter2_2:

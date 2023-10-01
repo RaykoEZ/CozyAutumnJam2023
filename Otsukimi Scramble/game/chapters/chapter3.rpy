@@ -23,16 +23,21 @@ default chapter3_locationSet = set()
 menu chapter3_ChooseLocation:
     set chapter3_locationSet
     "Where shall we go?"
-    "Ask around the shrine":
-        call chapter3_shrine
-        return
     "Go to the convenient store":
         call chapter3_shop
         return
-    "Do some research at my dorm":
+    "Search for clues on the internet":
+            p """Let's go to my place, 
+            
+            there should be records on the internet if your friend entered the Earth in a similar manner.
+            """
+            show kag surprise
+            k "Inta-net?"
+            "Ignoring her questioning gaze, I gesture her to follow my lead."
+            "A break from being outside all day, the timing cannot be better!"
+            p "Let's go back to my place, we have little time to waste!"
+            k "O-okay!"
         call chapter3_room
-        return
-    "I think we have enough information":
         return
 
 # optional dialogue path 
@@ -43,21 +48,7 @@ label chapter3_talkExtended:
     # trap trigger
     $ needSilverGrass = True
     return
-# go to shrine to ask for info
-label chapter3_shrine:
-    """Lucky for her, I'm an acquaintance of the workers in this shrine and a regular at the shrine. 
-    
-    A few of them should be staying at the dwelling behind of the sanctuary.   
 
-    I'll need to report the damages on the silver-grass as soon as possible
-    
-    Maybe we can find some clues about this Moon Rabbit.""" 
-    # clue triggers
-    $ identityKnown = True
-    $ witnessedInquisitor = True
-    $ talesOfSacrifce = True
-
-    return
 
 label chapter3_shop:  
     # clue triggers
