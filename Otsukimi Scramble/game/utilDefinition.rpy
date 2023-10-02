@@ -6,7 +6,6 @@ init python:
         path = "[config.gamedir]/[dirName]"
         if not os.path.exists(path):
             os.mkdir(path)
-
     # create and write to a file
     def MakeTextFile(filename, text):
         with open("[config.gamedir]/[filename]", "w") as f:
@@ -20,7 +19,11 @@ init python:
                 return checkContent in f.read()
         else:
             return False
-                
+define secret_sayu = "secrets/sayu.txt"
+define answer_sayu = ""
+define question_sayu = ""
+# has player solved the sayu puzzle?
+default sayuSecretSolved = False              
 # set all persistent variables here
 default persistent.bond = False
 # set variables for game state

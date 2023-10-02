@@ -95,7 +95,7 @@ label thinking:
     # trap check
     if needSilverGrass:
         """
-        This year's Moon Festival is cancelled due to poor weather, in addition to the sudden devestation of our silver-grass harvest, as witnessedInquisitored by yours truly.    
+        This year's Moon Festival is cancelled due to poor weather, in addition to the sudden devestation of our silver-grass harvest.    
     
         Luckily, I have some silver-grass as decoration. It might come in handy when we confront this Inquisitor.
         """
