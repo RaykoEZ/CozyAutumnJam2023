@@ -4,6 +4,7 @@ label chapter3:
         zoom 3.0
     with fade
     k "Well, what's our next move?"
+    p "We don't have much daytime left, searching around town blindly isn't going to work."
     call chapter3_ChooseLocation from _call_chapter3_ChooseLocation
     # go to shrine dwelling
     return
@@ -11,7 +12,7 @@ label chapter3:
 menu chapter3_ChooseLocation:
     "Where shall we go?"
     "Go to the convenient store":
-        p "Let's get some quick grub before anything."
+        p "Let's get some quick grub before anything, I need some time to recharge."
         k "Yes...Oh! I mean sure, let's go, I haven't eaten anything since I left home!"
         scene black with fade
         call chapter3_shop from _call_chapter3_shop
@@ -32,13 +33,27 @@ menu chapter3_ChooseLocation:
         return
 # We eat some food, talk to clerk, get out, get rained on, snooze under shelter
 label chapter3_shop:
-    
-    $ affinity -= 1
-    $ affinity += 1
+    scene store with fade
+    play shopDoor "audio/store open.mp3"
+    play shopBell "audio/store bell.mp3"
+
+    menu:
+        "What food do I get for Kaguya?"
+        "Limited Edition Moon Fest Dango":
+            return
+        "Veggie Salad":
+            $ affinity -= 1
+            return
+        "Fried Chicken":
+            $ affinity += 1
+            return
+    # phone rings, new tip
+    $ needSilverGrass = True
     return
 # We snooze on bed, kaguya annoys us, do some research on PC
 label chapter3_room:
     # clue triggers
     $ identityKnown = True
     $ talesOfSacrifce = True
+
     return

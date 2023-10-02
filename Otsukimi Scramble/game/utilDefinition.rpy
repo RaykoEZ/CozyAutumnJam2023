@@ -1,6 +1,9 @@
 #set all python init variables here
 init python:
     import os
+    renpy.music.register_channel("shopDoor", "sound", True)
+    renpy.music.register_channel("shopBell", "sound", True)
+
     # make 
     def MakeDirectory(dirName):
         path = config.gamedir + "/" + dirName
@@ -14,13 +17,14 @@ init python:
         return
     #check id file exists & its content
     def CheckTextInFile(filename, checkContent):
-        if renpy.exists(filename):
+        if renpy.exists(filename):  
             with open(config.gamedir + "/" + filename, "r") as f:
                 return checkContent in f.read()
         else:
             return False
 define secret_sayu = "secrets/sayu.txt"
 define answer_sayu = "FATTY TUNAS"
+define secret_
 define question_sayu = "What is Caesar's favourote food? MHAAF ABUHZ"
 # has player solved the sayu puzzle?
 default sayuSecretSolved = False              
