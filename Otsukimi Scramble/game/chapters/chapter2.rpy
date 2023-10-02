@@ -27,14 +27,14 @@ label chapter2:
     show kag angry with hpunch
     p "Aargh!"
     "My neck jerks back as she grips onto the back of my shirt collar and pulls me back."
-    call decideToHelp
+    call decideToHelp from _call_decideToHelp
     # return to main
     return
 label decideToHelp:
     menu: 
         "Looks like I won't be getting away easily."
         "Fine.":
-            call chapter2_1
+            call chapter2_1 from _call_chapter2_1
         # refuse to help
         "No, this is too much for me.":           
             # sad/frown
@@ -42,9 +42,9 @@ label decideToHelp:
             menu:
                 "..."
                 "Fine I'll help":
-                    call chapter2_1
+                    call chapter2_1 from _call_chapter2_1_1
                 "No":
-                    call chapter2_2           
+                    call chapter2_2 from _call_chapter2_2           
     return
 
 label chapter2_1:
@@ -85,7 +85,7 @@ label chapter2_1:
     show kag norm
     "She snaps out of her frustration and nods eagerly."
     k "Let's! You lead the way!"
-    call chapter2_shrine        
+    call chapter2_shrine from _call_chapter2_shrine        
     "As we head down the shrine path, many questions float in my mind."
     scene shrine hill evening:
         zoom 3.0
@@ -117,8 +117,7 @@ label chapter2_1:
             show kag happy
             k "Sure is~"
             # increase affinity
-            $ affinity += 1
-    
+            $ affinity += 1  
     scene black with fade
     return
 
@@ -167,11 +166,12 @@ label chapter2_shrine:
     p "She's...my classmate! We're, looking for her friend, he got lost."
     k "Yes, have you seen anyone wandering around suspiciously?"
     sayu "Suspiciously?"
+    # autosave here
+    $ renpy.force_autosave()
     # Check if we have any clue files triggered
     $ sayuSecretSolved = CheckTextInFile(secret_sayu, answer_sayu)
-
-    if sayuSecretSolved:
-        call sayuSecret
+    if sayuSecretSolved == True:
+        call sayuSecret from _call_sayuSecret
     # Make clue file and directory 
     else:
         $ MakeDirectory("secrets")
@@ -233,6 +233,7 @@ label sayuSecret:
     sayu "No, I could only see a shadowy figure."
     "Disappointed, Kaguya lowers her voice."
     k "Oh, okay."
+    hide kag with fade
     sayu "Sorry."
     p "It's fine, thanks to your story, we might have a lead now!"
     scene shrine evening with vpunch
@@ -241,7 +242,6 @@ label sayuSecret:
     "Sayu bows swiftly and runs off to her parents."
     scene black with dissolve
     # clue triggers
-    $ identityKnown = True
     $ witnessedInquisitor = True
     $ talesOfSacrifce = True
     return

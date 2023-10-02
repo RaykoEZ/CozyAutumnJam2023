@@ -1,4 +1,4 @@
-define inquisitor = Character("The Inquisitor")
+define inquisitor = Character("The Inquisitor", what_color="#dcc8fa")
 define clerk = Character("Store Clerk")
 # TODO: Flesh out dialogue in chapter 4
 label chapter4_Shrine:  
@@ -19,9 +19,9 @@ label inquisitorEncounter:
     show kag awkward with dissolve
 
     #TODO: Flesh out decisions on encounter with Inquisitor
-    call questioning1
+    call questioning1 from _call_questioning1
     inquisitor "You better know what you are talking about. I don't take kindly to slanders."
-    call questioning2
+    call questioning2 from _call_questioning2
     # if player presents silvergrass to the inquisitor (trap), trigger a sacrifice route
     if giveGrass:
         inquisitor "That's-"

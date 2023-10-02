@@ -3,12 +3,12 @@ init python:
     import os
     # make 
     def MakeDirectory(dirName):
-        path = "[config.gamedir]/[dirName]"
+        path = config.gamedir + "/" + dirName
         if not os.path.exists(path):
             os.mkdir(path)
     # create and write to a file
     def MakeTextFile(filename, text):
-        with open("[config.gamedir]/[filename]", "w") as f:
+        with open(config.gamedir + "/"+ filename, "w") as f:
             f.write(text)
             f.close()
         return
@@ -20,8 +20,8 @@ init python:
         else:
             return False
 define secret_sayu = "secrets/sayu.txt"
-define answer_sayu = ""
-define question_sayu = ""
+define answer_sayu = "FATTY TUNAS"
+define question_sayu = "What is Caesar's favourote food? MHAAF ABUHZ"
 # has player solved the sayu puzzle?
 default sayuSecretSolved = False              
 # set all persistent variables here

@@ -29,7 +29,7 @@ label end1:
     scene black with dissolve
     show kag shadow with dissolve
     "The memories of that day fades away."
-    hide kag with dissolve
+    hide kag
     scene end1
     p "Huh?"
     "That hood!"
@@ -43,9 +43,9 @@ label end1:
 
     # bad end, depend on affinity, slightly different sequence
     if affinity > 0:
-        call end1_better
+        call end1_better from _call_end1_better
     else:
-        call end1_bad
+        call end1_bad from _call_end1_bad
     return
 
 label end1_bad:

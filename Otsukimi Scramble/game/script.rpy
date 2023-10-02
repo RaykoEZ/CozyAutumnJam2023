@@ -18,7 +18,8 @@ label start:
         $ affinity -= 1 
         jump end1
     else:
-        call chapter3
+        call chapter3 from _call_chapter3
+    scene sky night with fade
     # Night begins, need to head to final destination
     "The sun has set, we don't have much time left."
     # panic/worry/frown
@@ -32,31 +33,31 @@ label start:
 menu chooseDestination: 
     p "Where do we go for the night?"
     "Park":
-        call confirmDestination
+        call confirmDestination from _call_confirmDestination
         if _return:
             jump chapter4_Park        
         else:
             jump chooseDestination 
     "Shrine":
-        call confirmDestination
+        call confirmDestination from _call_confirmDestination_1
         if _return:
             jump chapter4_Shrine        
         else:
             jump chooseDestination 
     "Store":
-        call confirmDestination
+        call confirmDestination from _call_confirmDestination_2
         if _return:
             jump chapter4_Store
         else:
             jump chooseDestination 
     "Stay in my room":
-        call confirmDestination
+        call confirmDestination from _call_confirmDestination_3
         if _return:
             jump chapter4_Room
         else:
             jump chooseDestination 
     "Think about it":
-        call thinking
+        call thinking from _call_thinking
         jump chooseDestination  
 
 menu confirmDestination:
@@ -87,11 +88,6 @@ label thinking:
     
         Also, people have seen strange shadows lurking near the Park fields at night. It may be worth a shot to investigate there. 
         """
-    # key info check
-    if talesOfSacrifce:
-        """Tales of Sacrifice and Birth - a tale of true virtue. 
-        
-        Could it be a coincidence that we are also dealing with a Moon Rabbit here?"""
     # trap check
     if needSilverGrass:
         """

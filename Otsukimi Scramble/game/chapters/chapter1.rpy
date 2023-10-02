@@ -26,7 +26,7 @@ label chapter1:
     "The twinkling flying object continus to flash in the sky."
     "I squint my eyes as I try to figure out what this is."
     p "\"It's probably an UFO, then.\" I muttered to myself jokingly."
-    "Of course, it was sarcasm. I never believe in these obvious delusions from the internet."
+    "Of course, it was sarcasm. I never believe in delusional ramblings from random people on the web."    
     scene clear sky:
         zoom 12.0
     p "Wait a second, it's getting bigger."
@@ -60,9 +60,9 @@ label chapter1:
 
     Standing here, 
     
-    paralyzed by what had happened a moment ago, 
+    I turned around instinctively, 
     
-    I finally realized the utter chaos around me as I tried to avert my gaze away from this strange girl."""
+    soon realizing the utter chaos around me as I tried to avert my gaze away from this strange girl."""
     ufo "Hey~ Are you listening?"
     p "Aargh-"
     "My legs refused to work properly as I tried to flee from the scene."
@@ -81,7 +81,11 @@ label chapter1:
     with vpunch 
     p "Let. Me. Go!"
     ufo "Calm down, I mean no harm!"
+    scene black with fade
     "Already tired from a day's work, I eventually gave up on escaping."
+    scene field evening:
+        zoom 3.0
+    with fade
     show kag norm
     ufo "Finally calmed down?"
     ufo "My name's Kaguya, I am a resident of the Moon!" 
