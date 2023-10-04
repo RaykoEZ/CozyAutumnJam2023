@@ -1,6 +1,7 @@
 # TODO: Flesh out dialogue in chapter 1
 define ufo = Character("???")
 label chapter1: 
+    $ PlayBGM("bgm_calm")
     scene field evening:
         zoom 3.0
     with fade  
@@ -13,6 +14,7 @@ label chapter1:
     p "We should have enough for tonight~"
     "Helping the silver-grass harvest for this year's Harvest Moon Festival has been a drag, to say the least."
     "We had a rough season for these little guys this year. I was worried we won't fill our baskets"
+    play wind "audio/wind.mp3" fadein 2 fadeout 2
     scene clear sky:
         zoom 3.0
     "I take a long stretch and lay down on the grass, staring blankly into the evening sky."
@@ -29,25 +31,39 @@ label chapter1:
     "Of course, it was sarcasm. I never believe in delusional ramblings from random people on the web."    
     scene clear sky:
         zoom 12.0
+
     p "Wait a second, it's getting bigger."
+    stop wind fadeout 0.3
+    stop music fadeout 0.3
+    with Pause(5)
+    play music "audio/bgm_tense_buildup.mp3" fadein 5 volume 0.1
+    queue music "audio/bgm_tense.mp3" loop volume 0.3
     ufo "...a-"
+
     "I can hear a quiet buzzing at first, but I soon realized it's someone screaming."
+    play sound "audio/shocked.mp3"
     ufo "AHH!!!"
+    scene clear sky:
+        zoom 12.0
+    with vpunch
     ufo "AAHHHHHHHHH!!!"
     p "!?"
+    play sound "audio/explosion0.mp3" volume 0.5
     scene clear sky:
         zoom 12.0
     with hpunch
     "I was too late to react as a beam of light landed several metres behind me."
-    scene field evening:
-        zoom 3.0
-    with vpunch
-    with dissolve
+    scene black with fade
     # audio explosion
     "The shockwave from the explosion sends me flying towards the shrubs."
     "I struggle to my feet, still in shock, marvelling at the enormous crater before me."
     show kag shadow
     "From the thick smoke and ashes, a human silhouette slowly emerges."
+    scene field evening:
+        zoom 3.0
+    with vpunch
+    with dissolve
+    play sound "<from 0 to 3>audio/walk.mp3" volume 0.5
     show kag norm
     "It was... a girl?"
     ufo "*Cough* *cough*"
@@ -81,6 +97,7 @@ label chapter1:
     with vpunch 
     p "Let. Me. Go!"
     ufo "Calm down, I mean no harm!"
+    stop music fadeout 0.3
     scene black with fade
     "Already tired from a day's work, I eventually gave up on escaping."
     scene field evening:
@@ -93,6 +110,7 @@ label chapter1:
     k "Please show me the way!"
     p "...sure"
     "Still nervous, I make my way out of the fields with the girl."
+    play sound "<from 0 to 3>audio/run.mp3"
     return
 
 #TODO:secret ending route

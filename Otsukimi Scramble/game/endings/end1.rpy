@@ -8,6 +8,7 @@ label end1:
         Where did she go?
         """
     else:
+        play sound "audio/rain.mp3" fadein 1.0 fadeout 1.0 
         """An uneventful night goes by.
         
         Focusing on the gentle pattering of the rain, 
@@ -66,6 +67,7 @@ label end1_bad:
 
 label end1_better:
     scene end1 base with fade
+    $ PlayBGM("main_theme")
     k "?"
     scene end1 surprise with fade
     p "Kaguya!?"
@@ -82,4 +84,5 @@ label end1_better:
     #show ending text
     scene black with dissolve
     "Ending 1 - Acceptance"
+    call ThanksForPlaying from _call_ThanksForPlaying
     return

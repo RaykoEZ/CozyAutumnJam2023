@@ -1,14 +1,17 @@
 label chapter2:
     scene black with dissolve
     "We ran as fast as we could before the echoes of sirens closed in on the scene."
+    play siren "audio/siren.mp3" volume 0.1
+    play sound "<from 1 to 4>audio/run.mp3"
     scene shrine hill evening:
         zoom 3.0
     with dissolve
-    """Once we safely reached the foot of the stairs leading to T. Shrine, I breath a sign of relief.
-    
-    The soft rustling of fallen leaves and swaying branches bring me with a familiar feeling of serenity."""
+    "Once we safely reached the foot of the stairs leading to T. Shrine, I breath a sign of relief."
+    play wind "audio/wind.mp3" fadein 2 fadeout 2
+    "The soft rustling of fallen leaves and swaying branches bring me with a familiar feeling of serenity."
     
     p "We should be safe around here."
+    $ PlayBGM("bgm_calm")
     "The Moon Festival takes place here tonight, so we should be able to blend in with the preparation staff."
     show kag norm   
     k "Say, I still don't know your name."
@@ -18,10 +21,12 @@ label chapter2:
     
     I would be in deep trouble if I were to associate with the perpetrator of that massive hole in the ground.
     """
+    stop music fadeout 0.3
+    stop wind fadeout 0.3
     p "Now if you'll excuse me, I need to go."
     show kag surprise:
         zoom 0.75
-    with vpunch 
+    with vpunch
     k "Hey!"
     # surprise
     show kag angry with hpunch
@@ -30,6 +35,7 @@ label chapter2:
     call decideToHelp from _call_decideToHelp
     # return to main
     return
+
 label decideToHelp:
     menu: 
         "Looks like I won't be getting away easily."
@@ -48,6 +54,7 @@ label decideToHelp:
     return
 
 label chapter2_1:
+    $ PlayBGM("bgm_calm")
     p "Fine, I'll help, but don't do anything reckless, the police are probably on edge after what you did."
     p "My name is [povName]."
     # atl animation for excitement
@@ -85,11 +92,14 @@ label chapter2_1:
     show kag norm
     "She snaps out of her frustration and nods eagerly."
     k "Let's! You lead the way!"
+    hide kag with fade
+    scene black with fade
     call chapter2_shrine from _call_chapter2_shrine        
     "As we head down the shrine path, many questions float in my mind."
     scene shrine hill evening:
         zoom 3.0
     with dissolve
+    play sound "<from 0 to 3>audio/walk.mp3"
     p "Hey Kaguya."
     show kag surprise
     k "What is it?"
@@ -118,6 +128,7 @@ label chapter2_1:
             k "Sure is~"
             # increase affinity
             $ affinity += 1  
+    play sound "<from 2 to 5>audio/wind.mp3" fadein 1.0 fadeout 1.0
     scene black with fade
     return
 
@@ -133,11 +144,12 @@ label chapter2_shrine:
     
     A few of them should be staying at the dwelling behind of the sanctuary.
     """
+    scene black with fade
+    "As we arrive at the entrance of the shrine, we are greeted by Sayu, a shrine maiden." 
+    sayu "[povName]? Hey [povName]!"
     scene shrine evening:
         zoom 3.0
     with fade
-    "As we arrive at the entrance of the shrine, we are greeted by Sayu, a shrine maiden." 
-    sayu "[povName]? Hey [povName]!"
     """Sayu is the granddaughter of the shrine master. 
     
     She helps out with daily tasks at the shrine on weekends.
@@ -154,6 +166,7 @@ label chapter2_shrine:
     scene shrine evening:
         zoom 3.0
     with vpunch
+    play sound "audio/outburst.mp3" volume 0.5
     sayu "Wait what!? What happen?"
     p "I'm in the same camp with you. I saw something landed there, next thing I know, there was a fire."
     scene shrine evening:
@@ -165,9 +178,10 @@ label chapter2_shrine:
     sayu "Hm? [povName], who might this person be?"
     p "She's...my classmate! We're, looking for her friend, he got lost."
     k "Yes, have you seen anyone wandering around suspiciously?"
+    stop music
+    $ renpy.force_autosave(True, True)
     sayu "Suspiciously?"
     # autosave here
-    $ renpy.force_autosave()
     # Check if we have any clue files triggered
     $ sayuSecretSolved = CheckTextInFile(secret_sayu, answer_sayu)
     if sayuSecretSolved == True:
@@ -177,6 +191,7 @@ label chapter2_shrine:
         $ MakeDirectory("secrets")
         $ MakeTextFile(secret_sayu, question_sayu) 
         sayu "...No, sorry." 
+        $ PlayBGM("bgm_calm")
         elder "Sayu! Time to finish up and eat!"
         "A raspy voice calls for Sayu from the back of the shrine."
         sayu "Coming!"
@@ -205,6 +220,7 @@ define pk = Character("Kaguya & I")
 label sayuSecret:
     show kag surprise
     sayu "Sacrifice..."
+    $ PlayBGM("bgm_tense")
     p "Sayu?"
     elder "Sayu! Time to finish up and eat!"
     sayu "Oh! Coming!"
@@ -227,6 +243,7 @@ label sayuSecret:
     sayu "...when I was walking back, I saw a weird old man walking up to the shrine."
     sayu "I was hiding behind trees, and heard him mumbling something about a \"Rite\" and \"Sacrifice\"."
     scene black with vpunch
+    play sound "audio/shocked.mp3"
     pk "!!!"
     show kag surprise
     k "Do you remember his face?"
@@ -237,8 +254,11 @@ label sayuSecret:
     sayu "Sorry."
     p "It's fine, thanks to your story, we might have a lead now!"
     scene shrine evening with vpunch
+    stop music
+    play sound "audio/outburst.mp3" volume 0.2
     elder "Sayu! Dinner's ready!"
     sayu "Coming!"
+    $ PlayBGM("bgm_calm")
     "Sayu bows swiftly and runs off to her parents."
     scene black with dissolve
     # clue triggers
@@ -258,5 +278,6 @@ label chapter2_2:
     $ refuseToHelp = True
     hide kag with fade
     scene clear sky with dissolve
+    play sound "<from 1 to 4>audio/walk.mp3"
     "Kagari and I parted ways."
     return

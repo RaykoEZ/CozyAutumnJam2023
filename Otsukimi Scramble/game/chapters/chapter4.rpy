@@ -1,5 +1,4 @@
 define inquisitor = Character("The Inquisitor", what_color="#dcc8fa")
-define clerk = Character("Store Clerk")
 # TODO: Flesh out dialogue in chapter 4
 label chapter4_Shrine:  
     scene shrine night  

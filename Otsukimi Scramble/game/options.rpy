@@ -14,7 +14,6 @@
 
 define config.name = _("Otsukimi Scramble")
 
-
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
@@ -62,7 +61,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-define config.main_menu_music = "Intro_themes.mp3"
+define config.main_menu_music = "main_theme.mp3"
 
 
 ## Transitions #################################################################
@@ -75,7 +74,12 @@ define config.main_menu_music = "Intro_themes.mp3"
 
 define config.enter_transition = dissolve
 define config.exit_transition = dissolve
-
+#Auto save enabled
+define config.autosave_frequency = 0
+define config.has_autosave = True
+define config.autosave_on_choice = False
+define config.autosave_on_quit = False
+define config.autosave_on_input = False
 
 ## Between screens of the game menu.
 

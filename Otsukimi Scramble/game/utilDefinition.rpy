@@ -1,9 +1,14 @@
 #set all python init variables here
 init python:
     import os
-    renpy.music.register_channel("shopDoor", "sound", True)
-    renpy.music.register_channel("shopBell", "sound", True)
+    renpy.music.register_channel("shopDoor", "sfx")
+    renpy.music.register_channel("shopBell", "sfx")
+    renpy.music.register_channel("siren", "sfx")
+    renpy.music.register_channel("wind", "sfx", loop = True)
+    renpy.music.register_channel("rain", "sfx", loop = True)
 
+    def PlayBGM(name, isLoop = True, vol = 0.3, fadeIn = 0.5):
+        renpy.music.play(filenames = "audio/"+name+".mp3", loop = isLoop, fadein = fadeIn, relative_volume = vol)
     # make 
     def MakeDirectory(dirName):
         path = config.gamedir + "/" + dirName
@@ -24,7 +29,6 @@ init python:
             return False
 define secret_sayu = "secrets/sayu.txt"
 define answer_sayu = "FATTY TUNAS"
-define secret_
 define question_sayu = "What is Caesar's favourote food? MHAAF ABUHZ"
 # has player solved the sayu puzzle?
 default sayuSecretSolved = False              
