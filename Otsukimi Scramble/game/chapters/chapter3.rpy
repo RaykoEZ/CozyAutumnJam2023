@@ -34,6 +34,7 @@ menu chapter3_ChooseLocation:
 # We eat some food, talk to clerk, get out, get rained on, snooze under shelter
 label chapter3_shop:
     scene store with fade
+    $ PlayBGM("bgm_calm", vol = 0.1)
     "We arrived at the convenience store."
 
     play shopDoor "audio/store open.mp3"
@@ -44,7 +45,7 @@ label chapter3_shop:
     k "Wow! So this is what a store looks like!"
     k "Sorry, didn't know what I would expected, we don't have stores at our place."
     p "So, what food can you eat?"
-    k "Send me your best chief~"
+    k "Send me your best chief~ I'll need to save some for souvenirs"
     "Leaving Kaguya at the entrance, I scan around the food section."
     p "Ooh yes, they still have some meal deal leftover, lucky~"
     "Then I turn around, looking for anything interesting to buy for Kaguya."
@@ -59,7 +60,6 @@ label chapter3_shop:
             show kag angry with hpunch
             k "Not bad-"
             k "!!! This issh... sho chewy!"
-            "After an arduous chewing session, Kaguya finally finishes the dangos."
             return
         "Veggie Salad":
             "Something nice and refreshing would do."
@@ -89,6 +89,7 @@ label chapter3_shop:
             k "Woah! This is the second best thing I've ever eaten in my life!"
             show kag happy
             k "I'm impressed! You do know what your stuff!"
+            k "I'll save a few of these, they'll love this!"
             $ affinity += 1
             return
     hide kag with fade
@@ -174,8 +175,27 @@ label chapter3_rain:
 # TODO: Flesh out dialogue in chapter 3 room scene
 # We snooze on bed, kaguya annoys us, do some research on PC
 label chapter3_room:
+    scene room with fade
+    play shopDoor "audio/store open.mp3"
+    play rain "audio/rain1.mp3" fadein 2.0
+    $ PlayBGM("bgm_calm", vol = 0.2)
     
+    "Just as we arrived at the dorm, it started to rain."
+    p "Woo, just in time~"
+    "I reach for the fridge and grab some snacks and drinks."
+    scene black with fade
+    play sound "audio/typing slow.mp3" fadein 1.0
+    """Our investigation brgins with online occult boards, 
+    
+    though most of the articles are unrelated..."""
+    stop music fadeout 1.0
+    p "\"Mysterious Shadows at A. Park\"? Hmm."
+    $ PlayBGM("bgm_tense", fadeIn = 1.0)
+    "The post describes a mysterious man wandering around A. Park's field."
+    p "Interesting, this is where we were this evening."
+    "The accompanied photos are too blurry to confirm his appearances."
+    p "Hmm..."
+    "Hours go by, we cannot find many solid clues about the Inquisitor."
     # clue triggers
-    $ talesOfSacrifce = True
-    $ locationKnown = False
+    $ locationKnown = True
     return

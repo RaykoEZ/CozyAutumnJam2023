@@ -1,87 +1,155 @@
-define inquisitor = Character("The Inquisitor", what_color="#dcc8fa")
+define inquisitor = Character("The Inquisitor", what_color="#ff8d8d")
+define oldMan = Character("The Inquisitor?", what_color="#e4e4e4")
+
 # TODO: Flesh out dialogue in chapter 4
 label chapter4_Shrine:  
-    scene shrine night  
-    "We arrive at the shrine and wait"
-    "Encount here"
+    scene shrine night:
+        zoom 3.0
+    with fade
+    play wind "audio/wind.mp3"  
+    "We arrive at the shrine."
+    stop wind fadeout 3.0
+    "With the festival cancelled, no one can be seen at the shrine."
+    "We hunker down near the shrine gates."
+    pk "..."
+    "Hours later."
+    play sound "audio/walk.mp3" fadein 1.0
+    "An elderly man approaches the temple."
+    play music "audio/bgm_tense_buildup.mp3" fadein 5 volume 0.1
+    queue music "audio/bgm_tense.mp3" loop volume 0.3
+    k "It's him! It has to be!"
+    "Kaguya's eyes widen as she tries to step out of the bush."
+
     jump inquisitorEncounter
 
 label chapter4_Park:
     scene field night
-    "We reach the park"
-    "Sees a figure near the crater" 
+    play music "audio/bgm_tense_buildup.mp3" fadein 5 volume 0.1
+    queue music "audio/bgm_tense.mp3" loop volume 0.3 
+    "We quickly run to A. Park"
+    play sound "<from 1.0 to 4.0>audio/run" fadein 3.0 fadeout 2.0
+    "As we arrive at the site, the police tapes surround the perimeter."
+    play wind "audio/wind.mp3"
+    p "You see anything?"
+    k "No...not here."
+    play sound "audio/confuse.mp3"
+    "Suddenly, a strange waddling sound."
+    p "Was that you?"
+    k "No."
+    "We scan around the field with our lights"
+    show inky norm with moveinleft
+    pk "!?"
+    play sound "audio/swipe.mp3"
+    hide inky with moveoutleft
+    "A shadow swiftly runs through us."
+    p "It's making its way out of the fields!"
+    "As the pursuit intensifies in the streets, we are lead to the santuary of T. Shrine."
     $ identityKnown = True
+    "What lies ahead is an old man, silently watching the moon."
     jump inquisitorEncounter
 
 label inquisitorEncounter:
-    scene shrine night with dissolve
-    show kag awkward with dissolve
-
+    scene shrine night:
+        zoom 3.0
+    with vpunch
+    k "Hold it boss!"
+    k "You're coming with me! We need you back!"
+    oldMan "Boss?"
+    k "Enough bluffing boss! You need to come back, we need you!"
+    oldMan "..."
+    "The conversation is not working, I need to think of something."
     #TODO: Flesh out decisions on encounter with Inquisitor
     call questioning1 from _call_questioning1
-    inquisitor "You better know what you are talking about. I don't take kindly to slanders."
-    call questioning2 from _call_questioning2
-    # if player presents silvergrass to the inquisitor (trap), trigger a sacrifice route
-    if giveGrass:
-        inquisitor "That's-"
-        "The rabbit's demeanour shifts from contempt to shock as I take a tuft of silver-grass out of my pocket."        
-        inquisitor "It seems I was mistaken about you two."
-        p "?"
-        inquisitor """I must thank you for acquiring such fine specimens, 
-        
-        despite what the dimwit next to you did to the flowerbeds today.
-        
-        I will be taking this now."""
-        jump inquisitorSacrifice
+    show inky norm with fade
+    pk "!?"
+    "The old man morphs into a dark blob with two pointy ears, resembling a rabbit."
+    inquisitor "If you are so concerned with the lives on the Moon, answer me."
+    call puzzle
+    # if player solved the puzzle
     # good end
-    if inquisitorScore > 1:
+    if inquisitorPuzzleSolved:
         jump end2
     else:
         jump inquisitorReject
 
 menu questioning1:
     "What brings you two here?"
-    "To meet you, Mister Inquisitor.": 
-        $ inquisitorScore += 1
-        return
+    "Let Kaguya handle it.":
+        k "Say something boss!"
+        k "You need to come with me or our people are going to die!"
+        jump inquisitorReject 
     "We heard about a suspicious individual...":
-        $ inquisitorScore -= 1
+        oldMan "Suspicious? What about me is suspicious?"
+        if talesOfSacrifce:
+            p "Does \"Sacrifice\" come to mind?"
+            oldMan "..."
+            oldman "Where did you hear that from?"
+            p "What is this \"Sacrifice\"? What do you want from all this?"
+            return
+        else:
+            p "An old man like you wouldn't come here at midnight."
+            p "I may not know what you are after bu-"
+            show inky angry with vpunch
+            play sound "audio/outburst.mp3" fadein 1.0
+            inquisitor "None of your business! I go where I want!"
+            show inky angry with vpunch
+            play sound "audio/outburst.mp3" fadein 1.0
+        jump inquisitorReject 
+    "Bluff my way through this":
+        p "Hold it Kaguya."
+        k "?"
+        "I cut the two off of their argument and step forward."
+        p "Sorry about this, my friend is in a hurry."
+        oldman "?"
+        p "We are here to witness the Full Moon, it's a shame the festival is cancelled."
+        p "May you be on the same boat?"
+        "The old man gradually calms down."
+        "He laughs."
+        scene shrine night:
+            zoom 3.0
+        with vpunch
+        oldMan "Ahaha! It's okay, young one. 
+        I like your style! The idiot girl next to you would help to learn your manners."    
+        p "?"
+        oldMan "We can stop playing dumb now, I'll give you a chance."
         return 
-    "Just sightseeing.":
-        return
+
 # if you give grass, inquisitor will scarifice himself
+# TODO: Make a puzzle to replace second question.
+label puzzle:
 
-menu questioning2:
-    "What should I do next?"
-    "Let Kaguya handle this": 
-        return
-    "Reveal the Inquisitor's motives":
-        return 
-    # activate trap if player brought grass to the showdown
-    "Present the silver-grass" if hasGrass:
-        $ giveGrass = True
-        return
-
+    return
 # When you fail the questioning
 label inquisitorReject:
     scene shrine night with fade
-    inquisitor "I've heard enough."
-    jump inquisitorSacrifice
+    oldMan "...Sorry"
+    show inky norm with fade
+    inquisitor "I've heard enough, I'm not going with you tonight, Kaguya."
+    k "Wh-?"
+    jump inquisitorFail
 # Trigger Trap Bad Ending
-label inquisitorSacrifice:
+label inquisitorFail:
     scene shrine night:
         zoom 1.5 
     with vpunch
     show kag surprise
-    "With a blink of an eye, "
+    "With a blink of an eye,"
     p "What!?"
-    "a tremendous force knocks me off balance"
+    "a tremendous force knocks me off balance."
     show kag shadow with fade
-    "Following a streak of sharp pain as I hit the stone tiles,
-    sending me tumbling down the staircase."
+    "Following by a pillar of blinding light at the temple, I hit the stone tiles in astonishment."
     scene black with fade
     k "[povName]!"
     hide kag with fade
+    pause 1.0
+    "When I regain my footing as the light dissapates,"
+    "Kaguya and the Inquisitor are nowhere to be seen."
+    p "Kaguya?"
+    scene shrine night:
+        zoom 2.0
+    with dissolve
+    "I search around the shrine for any traces of them."
+    "Nothing."
     jump end1
 # Head to Lost
 label chapter4_Store:

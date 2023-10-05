@@ -1,14 +1,7 @@
 label end1:
     scene black with dissolve
-    if giveGrass:
-        """The events of that night was a blur.   
-
-        The staff mentioned a girl in tears, carrying me into the emergency ward at dawn; it was probably Kaguya.
-
-        Where did she go?
-        """
-    else:
-        play sound "audio/rain.mp3" fadein 1.0 fadeout 1.0 
+    play sound "audio/rain.mp3" fadein 1.0 fadeout 1.0
+    if refuseToHelp:
         """An uneventful night goes by.
         
         Focusing on the gentle pattering of the rain, 
@@ -17,7 +10,7 @@ label end1:
         
         I soon drift off into sleep."""
     scene field evening with dissolve
-    "I was met with the police on the next day."
+    "A few days later, the police was at my doors."
     "Kaguya and I had left footprints at our first meeting; it was no surprise they would ask questions."
     "Fortunately, I was soon released as the police failed to find my \"accomplice\"."
     scene clear sky with dissolve

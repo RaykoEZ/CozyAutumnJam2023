@@ -38,7 +38,6 @@ default persistent.bond = False
 # Kaguya's affinity level, a key to unlock secret ending 
 default affinity = 0
 default refuseToHelp = False
-
 # identity of the treasure - inquisitor
 # details of the inquisitor life on earth
 default identityKnown = False
@@ -48,18 +47,12 @@ default witnessedInquisitor = False
 default locationKnown = False
 # tales of sacrifice, needed for secret unlock
 default talesOfSacrifce = False
-# score for the inquisitor decision at chapter 4
-default inquisitorScore = 0
 # check for secret ending unlock
 default secretUnlocked = False
-
+default inquisitorPuzzleSolved = False
 #-----------------IT'S A TRAP----------
 # TRAP know what to bring/what inquisitor wants - silvergrass
 default needSilverGrass = False
-# brought grass to the shrine on the showdown 
-default hasGrass = False
-# gave grass to the inquisitor
-default giveGrass = False
 # ------------------IT'S A TRAP---------
 
 image kag awkward closeup:

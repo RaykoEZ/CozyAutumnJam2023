@@ -1,6 +1,7 @@
 # TODO: Flesh out dialogue in chapter 1
 define ufo = Character("???")
 label chapter1: 
+    "Flower beds at A. Park, Early Evening."
     $ PlayBGM("bgm_calm")
     scene field evening:
         zoom 3.0

@@ -25,14 +25,18 @@ label start:
     else:
         call chapter3 from _call_chapter3
     stop music fadeout 0.5
+    stop rain fadeout 1.0
     pause 1.0
+    $ PlayBGM("bgm_tense", fadeIn = 1.0)
     scene sky night with fade
     # Night begins, need to head to final destination
-    "The sun has set, we don't have much time left."
+    "The raining sky clears up."
+    "With the sun set, we don't have much time left."
     # panic/worry/frown
     show kag surprise
     "Kaguya is getting restless, we need to make a move."
     k "C'mon! Do we know where to find this bugger?"
+    stop music fadeout 1.0
     jump chooseDestination
     # This ends the game.
     pause 0.5

@@ -67,13 +67,34 @@ label chapter2_1:
     "She sticks her tongue out mischievously."
     p "Hmph, so, what help do you need?"
     show kag norm
-    k "I am trying to find someone, and I need to find him by dawn."
+    scene black with fade
+    pause 1.5
+    k "I am trying to find someone,"
+    k "He's the Boss of the Moon! We call him the Inquisitor!"
+    k "Why he left was a mystery to us-"
+    k "but Boss had a huge tantrum and left us for the Earth."
+    k "It's been about a year without the Boss, and our base is in disarray!"
+    k "Most of us don't know how to take care of our supplies!"
+    k "Many of our brethren are on the verge of malnutrition."
+    k "I followed Boss' tracks and landed here." 
+    k "The trip drains my energy reserves to maintain a connection between the worlds."
+    k "And I might not have enough power to travel back if we don't find Boss before dawn."
+    scene shrine hill evening:
+        zoom 3.0
+    with dissolve
+    pause 1.5
     show kag awkward
-    p "Any ideas of what this person might look like?"
+    k "This might be a lot to take in, but please! Many lives are on the line!"
+    p "..."
+    "As much as I want this to be a dream, my hand still hurts from her vice grip."
+    "I already agreed to help her, guess there's no harm going along with her story for a little while longer."
+    p "Sure, Any ideas of what this person might look like?"
+    show kag surprise
+    pause 0.5
     show kag norm
-    k """He's a forceful-yet-charming boss man. We used to call him the Inquisitor!
-
-    He might look like one of those muscular high schoolers with mysterious superpowers! 
+    k """He's a forceful-yet-charming boss, a strong Moon Rabbit. 
+    
+    Maybe one of the muscular highschoolers with mysterious superpowers! 
     """
     p "Uh-I'm afraid I've no clue where to start."
     "This guy can even be on the other end of the world for all I know."
@@ -123,9 +144,10 @@ label chapter2_1:
             k "No..."
             k "That was an accident."
             k "Inky made it so I'm not great at piloting it."
-            p "Inky? Is that the Inquisitor?"
+            p "Inky? Is that what you call your boss?"
             show kag happy
-            k "Sure is~"
+            k "Sure is~ It's a popular nickname."
+            "*sigh* Now I can guess why the guy left the Moon."
             # increase affinity
             $ affinity += 1  
     play sound "<from 2 to 5>audio/wind.mp3" fadein 1.0 fadeout 1.0
