@@ -10,10 +10,16 @@ label start:
     call prologue from _call_prologue
     stop music fadeout 1.0
     pause 1.0
-    # These display lines of dialogue.
-    call chapter1 from _call_chapter1
+    python:
+        # find secret file
+        inviteCheck = CheckTextInFile("moon/" + inviteFilename, persistent.secretPlayerName)           
+        secretCheck = inviteCheck and povName == persistent.secretPlayerName
+    if secretCheck:
+        jump chapter1x
+    else:            
+        # These display lines of dialogue.
+        call chapter1 from _call_chapter1
     stop music fadeout 0.5
-    pause 1.0
     call chapter2 from _call_chapter2
     stop music fadeout 0.5
     pause 1.0
@@ -39,7 +45,6 @@ label start:
     stop music fadeout 1.0
     jump chooseDestination
     # This ends the game.
-    pause 0.5
     return
 
 menu chooseDestination: 
@@ -118,6 +123,7 @@ label thinking:
 label ThanksForPlaying:
     scene black with dissolve
     $ PlayBGM("main_theme")
+    pause 1.0
     """Thanks for Playing! Hope you liked it~
     
     Made by (Discord handle): {color=#00ff00}raykooooo{/color} 
@@ -128,5 +134,5 @@ label ThanksForPlaying:
     {color=#00ff00}sirlamps{/color} (SFX & Composer)
     """
     stop music fadeout 1.0
-    pause 3.0
+    pause 1.0
     return

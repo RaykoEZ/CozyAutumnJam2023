@@ -1,10 +1,8 @@
 define inquisitor = Character("The Inquisitor", what_color="#ff8d8d")
 define oldMan = Character("The Inquisitor?", what_color="#e4e4e4")
 
-# TODO: Flesh out dialogue in chapter 4
 label chapter4_Shrine:  
-    scene shrine night:
-        zoom 3.0
+    scene shrine night
     with fade
     play wind "audio/wind.mp3"  
     "We arrive at the shrine."
@@ -19,7 +17,6 @@ label chapter4_Shrine:
     queue music "audio/bgm_tense.mp3" loop volume 0.3
     k "It's him! It has to be!"
     "Kaguya's eyes widen as she tries to step out of the bush."
-
     jump inquisitorEncounter
 
 label chapter4_Park:
@@ -27,7 +24,7 @@ label chapter4_Park:
     play music "audio/bgm_tense_buildup.mp3" fadein 5 volume 0.1
     queue music "audio/bgm_tense.mp3" loop volume 0.3 
     "We quickly run to A. Park"
-    play sound "<from 1.0 to 4.0>audio/run" fadein 3.0 fadeout 2.0
+    play sound "<from 1.0 to 4.0>audio/run.mp3" fadein 3.0 fadeout 2.0
     "As we arrive at the site, the police tapes surround the perimeter."
     play wind "audio/wind.mp3"
     p "You see anything?"
@@ -45,32 +42,28 @@ label chapter4_Park:
     p "It's making its way out of the fields!"
     "As the pursuit intensifies in the streets, we are lead to the santuary of T. Shrine."
     $ identityKnown = True
-    "What lies ahead is an old man, silently watching the moon."
+    "What lies ahead - an old man, silently watching the moon."
     jump inquisitorEncounter
 
 label inquisitorEncounter:
-    scene shrine night:
-        zoom 3.0
+    scene shrine night
     with vpunch
     k "Hold it boss!"
     k "You're coming with me! We need you back!"
     oldMan "Boss?"
     k "Enough bluffing boss! You need to come back, we need you!"
     oldMan "..."
-    "The conversation is not working, I need to think of something."
-    #TODO: Flesh out decisions on encounter with Inquisitor
+    "The conversation is not going anywhere, I need to think of something."
+    $ renpy.force_autosave(True, True)
     call questioning1 from _call_questioning1
     show inky norm with fade
     pk "!?"
     "The old man morphs into a dark blob with two pointy ears, resembling a rabbit."
-    inquisitor "If you are so concerned with the lives on the Moon, answer me."
-    call puzzle
-    # if player solved the puzzle
+    stop music fadeout 1.0
+    scene black with fade
     # good end
-    if inquisitorPuzzleSolved:
-        jump end2
-    else:
-        jump inquisitorReject
+    jump end2
+
 
 menu questioning1:
     "What brings you two here?"
@@ -83,7 +76,7 @@ menu questioning1:
         if talesOfSacrifce:
             p "Does \"Sacrifice\" come to mind?"
             oldMan "..."
-            oldman "Where did you hear that from?"
+            oldMan "Where did you hear that from?"
             p "What is this \"Sacrifice\"? What do you want from all this?"
             return
         else:
@@ -100,25 +93,19 @@ menu questioning1:
         k "?"
         "I cut the two off of their argument and step forward."
         p "Sorry about this, my friend is in a hurry."
-        oldman "?"
+        oldMan "?"
         p "We are here to witness the Full Moon, it's a shame the festival is cancelled."
         p "May you be on the same boat?"
         "The old man gradually calms down."
         "He laughs."
-        scene shrine night:
-            zoom 3.0
+        scene shrine night
         with vpunch
-        oldMan "Ahaha! It's okay, young one. 
+        oldMan "Ahaha! It's okay, young one.
         I like your style! The idiot girl next to you would help to learn your manners."    
         p "?"
-        oldMan "We can stop playing dumb now, I'll give you a chance."
+        oldMan "We can stop playing dumb now."
         return 
 
-# if you give grass, inquisitor will scarifice himself
-# TODO: Make a puzzle to replace second question.
-label puzzle:
-
-    return
 # When you fail the questioning
 label inquisitorReject:
     scene shrine night with fade
@@ -126,6 +113,7 @@ label inquisitorReject:
     show inky norm with fade
     inquisitor "I've heard enough, I'm not going with you tonight, Kaguya."
     k "Wh-?"
+    k "Why boss?"
     jump inquisitorFail
 # Trigger Trap Bad Ending
 label inquisitorFail:
@@ -145,8 +133,7 @@ label inquisitorFail:
     "When I regain my footing as the light dissapates,"
     "Kaguya and the Inquisitor are nowhere to be seen."
     p "Kaguya?"
-    scene shrine night:
-        zoom 2.0
+    scene shrine night
     with dissolve
     "I search around the shrine for any traces of them."
     "Nothing."
@@ -174,16 +161,17 @@ label chapter4_Store:
     jump chapter4_Lost
 # Head to Lost
 label chapter4_Room:
-    scene room with dissolve
+    scene room rain with dissolve
+    play rain "audio/rain.mp3" fadein 1.0
     """It's nice to take a break from the ordeals awaiting us.
     
     My eyelids feel heavy as I dive into bed.
     
     Everything about today was exhausting.
 
-    School assignments, work, a crash-landed alien girl, destroying my fruits of labour...
+    School assignments, work, a crash-landed alien girl...
     
-    and dragging me into her mess... 
+    dragging me into her mess... 
     
     I need a break from this..."""
     show kag surprise
@@ -192,11 +180,10 @@ label chapter4_Room:
     show kag awkward
     k "Hey, can we save bed time for a bit later? We have a rabbit to catch!"
     #zoom in more
-    show kag shake
     "I didn't take long to fall asleep, despite the incessant shaking from an agitated girl."
     #zoom in more
-    show kag shake
     p "zzz..."
+    stop rain fadeout 1.0
     jump chapter4_Lost
 # Got to ending 1
 label chapter4_Lost:

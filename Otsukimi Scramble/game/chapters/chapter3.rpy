@@ -33,10 +33,9 @@ menu chapter3_ChooseLocation:
         return
 # We eat some food, talk to clerk, get out, get rained on, snooze under shelter
 label chapter3_shop:
-    scene store with fade
+    scene shop with fade
     $ PlayBGM("bgm_calm", vol = 0.1)
     "We arrived at the convenience store."
-
     play shopDoor "audio/store open.mp3"
     play shopBell "audio/store bell.mp3"
     "Unsurprisingly, the place isn't busy in the evenings."
@@ -60,7 +59,6 @@ label chapter3_shop:
             show kag angry with hpunch
             k "Not bad-"
             k "!!! This issh... sho chewy!"
-            return
         "Veggie Salad":
             "Something nice and refreshing would do."
             show kag surprise with easeinleft
@@ -73,14 +71,13 @@ label chapter3_shop:
             k "This is so bland I'm gonna cry..."
             p "Sheesh..."
             $ affinity -= 1
-            return
         "Fried Chicken":
             """Lemme introduce her to the world of Convenience Store Hot Foods!
 
             This place has one of the best convenience store fired chickens in town! 
 
             There is no way she can resist this crispy, juicy, spicy package of umami!"""
-            scene store with vpunch
+            scene shop with vpunch
             "She will bow down and submit to the power and the culinary arts of this planet!"
             show kag surprise with easeinleft
             k "..."
@@ -91,7 +88,7 @@ label chapter3_shop:
             k "I'm impressed! You do know what your stuff!"
             k "I'll save a few of these, they'll love this!"
             $ affinity += 1
-            return
+        
     hide kag with fade
     "After finishing our meals, I come to the counter to get some snacks I picked up for later."
     clerk "Thanks, here are your changes."
@@ -121,7 +118,7 @@ label chapter3_shop:
     play shopBell "audio/store bell.mp3"
     pause 1.0
     scene black with fade
-    call chapter3_rain
+    call chapter3_rain from _call_chapter3_rain
     return
 
 

@@ -329,7 +329,15 @@ screen navigation():
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
             textbutton _("Quit") action Quit(confirm=not main_menu)
+# Main Menu Navigation            
+screen main_menu_navigation():
 
+    vbox:
+        style_prefix "navigation"
+        xalign 0.25
+        yalign 0.9
+        use navigation
+        
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
@@ -339,6 +347,7 @@ style navigation_button:
     properties gui.button_properties("navigation_button")
 
 style navigation_button_text:
+    xalign 0.5
     properties gui.button_text_properties("navigation_button")
 
 
@@ -358,16 +367,18 @@ screen main_menu():
     ## This empty frame darkens the main menu.
     frame:
         style "main_menu_frame"
-
+        xalign 1.0
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
-
+    frame:
+        style "main_menu_frame"
+        xalign 1.0
+        use main_menu_navigation
     if gui.show_name:
 
         vbox:
+            xalign 0.1
             style "main_menu_vbox"
-
             text "[config.name!t]":
                 style "main_menu_title"
 
@@ -398,9 +409,11 @@ style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
 
 style main_menu_title:
+    xalign 0.1
     properties gui.text_properties("title")
 
 style main_menu_version:
+    xalign 0.0
     properties gui.text_properties("version")
 
 

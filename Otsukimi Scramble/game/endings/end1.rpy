@@ -9,11 +9,15 @@ label end1:
         worn out by the events I encountered today, 
         
         I soon drift off into sleep."""
-    scene field evening with dissolve
+    scene field evening:
+        zoom 3.0
+    with dissolve
     "A few days later, the police was at my doors."
     "Kaguya and I had left footprints at our first meeting; it was no surprise they would ask questions."
     "Fortunately, I was soon released as the police failed to find my \"accomplice\"."
-    scene clear sky with dissolve
+    scene clear sky:
+        zoom 3.0
+    with dissolve
     "I haven't seen Kaguya after the night we'd gone our separate ways."
     """
     Day by day,
@@ -76,6 +80,6 @@ label end1_better:
     Yet here she is, in front of me."""
     #show ending text
     scene black with dissolve
-    "Ending 1 - Acceptance"
+    "Ending 1.1 - Acceptance"
     call ThanksForPlaying from _call_ThanksForPlaying
     return

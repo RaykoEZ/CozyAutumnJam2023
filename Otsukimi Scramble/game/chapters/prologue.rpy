@@ -7,6 +7,7 @@ label playerName:
         povName = povName.strip()
         if not povName:
             povName = "Name"
+        playerName = povName    
     return
 
 label prologue:

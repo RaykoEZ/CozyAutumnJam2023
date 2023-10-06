@@ -1,10 +1,10 @@
 label chapter2:
     scene black with dissolve
+    play siren "audio/siren.mp3" volume 0.05
     "We ran as fast as we could before the echoes of sirens closed in on the scene."
-    play siren "audio/siren.mp3" volume 0.1
+    stop siren fadeout 1.0
     play sound "<from 1 to 4>audio/run.mp3"
-    scene shrine hill evening:
-        zoom 3.0
+    scene shrine hill evening
     with dissolve
     "Once we safely reached the foot of the stairs leading to T. Shrine, I breath a sign of relief."
     play wind "audio/wind.mp3" fadein 2 fadeout 2
@@ -79,8 +79,7 @@ label chapter2_1:
     k "I followed Boss' tracks and landed here." 
     k "The trip drains my energy reserves to maintain a connection between the worlds."
     k "And I might not have enough power to travel back if we don't find Boss before dawn."
-    scene shrine hill evening:
-        zoom 3.0
+    scene shrine hill evening
     with dissolve
     pause 1.5
     show kag awkward
@@ -117,8 +116,7 @@ label chapter2_1:
     scene black with fade
     call chapter2_shrine from _call_chapter2_shrine        
     "As we head down the shrine path, many questions float in my mind."
-    scene shrine hill evening:
-        zoom 3.0
+    scene shrine hill evening
     with dissolve
     play sound "<from 0 to 3>audio/walk.mp3"
     p "Hey Kaguya."
@@ -158,9 +156,7 @@ define sayu = Character("Sayu")
 define elder = Character("Elderly Voice")
 # go to shrine to ask for info
 label chapter2_shrine:
-    scene shrine hill evening:
-        zoom 3.0
-    with fade
+    scene shrine hill evening with fade
     """
     Lucky for her, I'm an acquaintance of the workers in this shrine and a regular at the shrine. 
     
@@ -169,8 +165,7 @@ label chapter2_shrine:
     scene black with fade
     "As we arrive at the entrance of the shrine, we are greeted by Sayu, a shrine maiden." 
     sayu "[povName]? Hey [povName]!"
-    scene shrine evening:
-        zoom 3.0
+    scene shrine evening
     with fade
     """Sayu is the granddaughter of the shrine master. 
     
@@ -185,14 +180,12 @@ label chapter2_shrine:
     """
     p "As for the silver-grass - not so hot, I'm afraid. There was a fire at the fields just now."
     sayu "Ah, that's too ba-"
-    scene shrine evening:
-        zoom 3.0
+    scene shrine evening
     with vpunch
     play sound "audio/outburst.mp3" volume 0.5
     sayu "Wait what!? What happen?"
     p "I'm in the same camp with you. I saw something landed there, next thing I know, there was a fire."
-    scene shrine evening:
-        zoom 3.0
+    scene shrine evening
     with vpunch
     p "This ruins our supplies for the festival!"
     k "Ahaha..."

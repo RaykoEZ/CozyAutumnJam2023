@@ -27,13 +27,21 @@ init python:
                 return checkContent in f.read()
         else:
             return False
+# puzzles for chapter 2
 define secret_sayu = "secrets/sayu.txt"
 define answer_sayu = "FATTY TUNAS"
 define question_sayu = "What is Caesar's favourote food? MHAAF ABUHZ"
+# promise the inquisitor
+define promise = ""
 # has player solved the sayu puzzle?
-default sayuSecretSolved = False              
+default sayuSecretSolved = False    
+
+# Secret Ending Puzzle - Sending invite to the moon
+define inviteFilename = "invite.txt"
+define inviteContent = "Dear Kaguya,\n Come."          
 # set all persistent variables here
-default persistent.bond = False
+default persistent.secretPlayerName = ""
+default persistent.promise = False
 # set variables for game state
 # Kaguya's affinity level, a key to unlock secret ending 
 default affinity = 0
@@ -48,12 +56,7 @@ default locationKnown = False
 # tales of sacrifice, needed for secret unlock
 default talesOfSacrifce = False
 # check for secret ending unlock
-default secretUnlocked = False
-default inquisitorPuzzleSolved = False
-#-----------------IT'S A TRAP----------
-# TRAP know what to bring/what inquisitor wants - silvergrass
 default needSilverGrass = False
-# ------------------IT'S A TRAP---------
 
 image kag awkward closeup:
     "images/kaguya/kag awkward.png"
