@@ -1,7 +1,6 @@
 define clerk = Character("Store Clerk")
 label chapter3:
-    scene sky evening:
-        zoom 3.0
+    scene sky evening
     with fade
     k "Well, what's our next move?"
     p "We don't have much daytime left, searching around town blindly isn't going to work."
@@ -13,7 +12,7 @@ menu chapter3_ChooseLocation:
     "Where shall we go?"
     "Go to the convenient store":
         p "Let's get some quick grub before anything, I need some time to recharge."
-        k "Yes...Oh! I mean sure, let's go, I haven't eaten anything since I left home!"
+        k "Yes...Oh! I haven't eaten anything since I left home!"
         scene black with fade
         call chapter3_shop from _call_chapter3_shop
         return
@@ -59,31 +58,31 @@ label chapter3_shop:
             show kag angry with hpunch
             k "Not bad-"
             k "!!! This issh... sho chewy!"
-        "Veggie Salad":
-            "Something nice and refreshing would do."
+        "Experimental Veggie Salad":
+            "Salad? Sounds nice and refreshing, that'll do."
             show kag surprise with easeinleft
             k "..."
             show kag awkward
             "She takes a long sighs."
-            k "Um, do you think I'm a rabbit?" 
+            k "Um, do you think I'm a rabbit?"
             k "I'm not a fan of this to be honest, it lacks flavour."
             show kag sad
             k "This is so bland I'm gonna cry..."
             p "Sheesh..."
             $ affinity -= 1
         "Fried Chicken":
-            """Lemme introduce her to the world of Convenience Store Hot Foods!
+            """I shall introduce her to the world of {color=#ff7a38}{b}Convenience Store Hot Foods{/b}{/color}!
 
-            This place has one of the best convenience store fired chickens in town! 
+            This place has one of the best convenience store fried chickens in town! 
 
-            There is no way she can resist this crispy, juicy, spicy package of umami!"""
+            There is no way she can resist this {color=#ff7a38}crispy, juicy, spicy package of umami{/color}!"""
             scene shop with vpunch
-            "She will bow down and submit to the power and the culinary arts of this planet!"
+            "{b}She will bow down and submit to the power and the culinary arts of this planet{/b}!"
             show kag surprise with easeinleft
             k "..."
             k "!!!"
             show kag shake with hpunch
-            k "Woah! This is the second best thing I've ever eaten in my life!"
+            k "{b}Woah!{/b} This is the second best thing I've ever eaten in my life!"
             show kag happy
             k "I'm impressed! You do know what your stuff!"
             k "I'll save a few of these, they'll love this!"
@@ -93,17 +92,19 @@ label chapter3_shop:
     "After finishing our meals, I come to the counter to get some snacks I picked up for later."
     clerk "Thanks, here are your changes."
     p "Cool thanks, say, how's your shift today? Anyone interesting coming in yet?"
+    # suggestion
     if sayuSecretSolved :
-        p "Maybe anyone asking for anything weird?"
+        pause 0.5
+        p "{color=#fff238}Maybe anyone asking for anything weird{/color}?"
     "It's worth a try to ask anyone about the Inquisitor."
     clerk "?"
     clerk "Oh hehe~ You'd be surprised what I've seen."
     stop music fadeout 2
     clerk "...Apart from you guys..."
     if sayuSecretSolved:
-        clerk "Before I was onshift, an unreasonable man was pestering my buddy, had to jump in and calm them down."
+        clerk "Before I was onshift, {color=#fff238}an unreasonable man{/color} was pestering my buddy, had to jump in and calm them down."
         p "What was he talking about? What does he look like? We're trying to find someone."
-        clerk "Well, he was asking for fresh flowers? I think it was silver-grass?" 
+        clerk "Well, he was asking for fresh flowers? I think it was {color=#fff238}silver-grass{/color}?" 
         clerk "We don't sell any here and the local florist is closed for the day."
         clerk "He looks a bit older than my Dad maybe, has a pretty scary face too."
         clerk "That's pretty much it, hope this helps."
@@ -123,7 +124,7 @@ label chapter3_shop:
 
 
 label chapter3_rain:
-    "After a few exchanges of encouragement, we continue our search for the Inquisitor."
+    "After a few exchanges of encouragement, we continue our search."
     "And suddenly..."
     scene rain sky with dissolve
     play rain "audio/rain1.mp3" fadein 2.0
@@ -133,6 +134,7 @@ label chapter3_rain:
     "As we wait for the rain to subside, exhaustion overtakes my mind."
     scene rain sky with dissolve
     p "*Yawn*~"
+    "The gentle autumn drizzle woos my mind as I close my eyes to relax as much as I am able."
     "Soon enough, I fell asleep."
     p "zzz"
     k "You'll catch a cold if you sleep here."
@@ -159,17 +161,16 @@ label chapter3_rain:
     p "Hold on a sec! Gimme my phone back!"
     "I check my call record and breath a sign of relief - it was Sayu."
     p "Why did she call me? Did she say something to you?"
-    k "Yes, in fact, she remembered an urban legends from her classmates."
-    k "What's important is - people saw weird shadows lurking in the flower fields at night."
+    k "Yes, in fact, she remembered an {color=#fff238}urban legend{/color} from her classmates."
+    k "What's important is - people saw {color=#fff238}weird shadows lurking in the flower fields at night{/color}."
     p "The field you destroyed?"
     "Deep in thought, she ignores my snarky remark."
-    k "Maybe it's a clue to where Inky lives?"
+    k "Maybe it's a clue to where boss lives?"
     p "Hmm...Can't be sure yet, but it's better than nothing."
     "In that case, we should check that place out soon, it's almost nighttime."
     # phone rings, new tip
     $ locationKnown = True   
     return
-# TODO: Flesh out dialogue in chapter 3 room scene
 # We snooze on bed, kaguya annoys us, do some research on PC
 label chapter3_room:
     scene room with fade
@@ -186,13 +187,13 @@ label chapter3_room:
     
     though most of the articles are unrelated..."""
     stop music fadeout 1.0
-    p "\"Mysterious Shadows at A. Park\"? Hmm."
+    p "{color=#ff7a38}\"Mysterious Shadows at A. Park\"{/color}? Hmm."
     $ PlayBGM("bgm_tense", fadeIn = 1.0)
     "The post describes a mysterious man wandering around A. Park's field."
     p "Interesting, this is where we were this evening."
     "The accompanied photos are too blurry to confirm his appearances."
     p "Hmm..."
-    "Hours go by, we cannot find many solid clues about the Inquisitor."
+    "Hours go by, we cannot find more solid clues about the Inquisitor."
     # clue triggers
     $ locationKnown = True
     return

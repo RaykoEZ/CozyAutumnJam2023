@@ -124,14 +124,21 @@ label ThanksForPlaying:
     scene black with dissolve
     $ PlayBGM("main_theme")
     pause 1.0
-    """Thanks for Playing! Hope you liked it~
+    """
+    Game by: 
     
-    Made by (Discord handle): {color=#00ff00}raykooooo{/color} 
-    (Direction, Game Design, Scripting & Programming), 
+    {color=#00ff00}raykooooo{/color} (Discord handle):
+    General Direction, Environment Art, Game Design, Scripting & Programming, 
     
-    {color=#00ff00}rabbleram{/color} (Art), 
+    {color=#00ff00}rabbleram{/color} (Discord handle):
+    Character Design, Character Art, Environment Art, Illustration 
     
-    {color=#00ff00}sirlamps{/color} (SFX & Composer)
+    {color=#00ff00}sirlamps{/color} (Discord handle):
+    SFX & Music Composer
+
+    Art assets referenced from: Ezekiel Eastbrook, MK online services
+
+    Thanks for Playing!
     """
     stop music fadeout 1.0
     pause 1.0

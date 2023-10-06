@@ -9,14 +9,12 @@ label end1:
         worn out by the events I encountered today, 
         
         I soon drift off into sleep."""
-    scene field evening:
-        zoom 3.0
+    scene field evening
     with dissolve
     "A few days later, the police was at my doors."
     "Kaguya and I had left footprints at our first meeting; it was no surprise they would ask questions."
     "Fortunately, I was soon released as the police failed to find my \"accomplice\"."
-    scene clear sky:
-        zoom 3.0
+    scene clear sky
     with dissolve
     "I haven't seen Kaguya after the night we'd gone our separate ways."
     """
@@ -37,7 +35,7 @@ label end1:
     with dissolve
     "As I close my distance between the girl, whose gaze fixed towards the autumn evening sky,"  
 
-    p "Kaguya."
+    p "{color=#fff238}Kaguya{/color}."
 
     # bad end, depend on affinity, slightly different sequence
     if affinity > 0:

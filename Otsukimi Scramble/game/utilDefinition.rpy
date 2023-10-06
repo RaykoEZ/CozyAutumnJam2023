@@ -31,8 +31,16 @@ init python:
 define secret_sayu = "secrets/sayu.txt"
 define answer_sayu = "FATTY TUNAS"
 define question_sayu = "What is Caesar's favourote food? MHAAF ABUHZ"
-# promise the inquisitor
-define promise = ""
+# inky promise content
+define promise = "Hwffadwkk af lzak xgjwayf ogjdv, A dsq gf lzw kadnwj ozwsl xawdv, zwsv wehlq, vwngav gx vmlq. Al osk lzw xajkl laew A lsklwv ljmw tdakk.\n \
+\nFwnwjlzwdwkk, xjwwvge vgwk fgl tmq ew kmklwfsfuw. Zmfywj xgjuwk ew lg kljacw gml xgj xggv, uzwoafy gf yjskk sfv tmyk sdacw.\n \
+\nAl oskf'l wfgmyz xgj kgewgfw gx eq klslmjw.\n \
+\nA dsq af lzw kadnwj ozwsl xawdv, twddq wehlq, klsjnafy. Eq laew ak mh.\n \
+\nGf lzw hjwuahauw twlowwf daxw sfv vwslz, kzw usew.\n \
+\nKzw yjsflwv ew xggv sfv kzwdlwj.\n \
+\nKzw twklgowv mhgf ew s faucfsew, s faucfsew egjw lsklwxmd lzsf lzw glzwj egjgfk svvjwkkwv ew sl eq vmlawk.\n \
+\nAl osk lzw egkl ewsfafyxmd wjs gx eq klsq gf lzak hdsfwl.\n \
+\nLzgmyz eq tjwlzjwf esq kmxxwj yjsnwdq xjge eq ugflafmwv stkwfuw, A emkl hsq jwkhwul lg eq twdgnwv twxgjw eq vwhsjlmjw."
 # has player solved the sayu puzzle?
 default sayuSecretSolved = False    
 

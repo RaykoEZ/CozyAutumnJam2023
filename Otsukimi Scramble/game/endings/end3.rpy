@@ -1,7 +1,6 @@
 label end3:
     "Ever since the day Kaguya returned, my daily life has never been more...spontaneous."
     # secret ending
-    $ PlayBGM("main_theme")
     scene clear sky
     with fade
     "She frequently drops by, dragging me on her travels."
@@ -10,5 +9,7 @@ label end3:
     scene end3 with fade
     pause 0.5
     "Ending Ex - My Treasure"
+    stop music fadeout 1.0
+    pause 1.0
     call ThanksForPlaying from _call_ThanksForPlaying_3
     return

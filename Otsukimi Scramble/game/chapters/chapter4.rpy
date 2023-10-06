@@ -1,5 +1,5 @@
 define inquisitor = Character("The Inquisitor", what_color="#ff8d8d")
-define oldMan = Character("The Inquisitor?", what_color="#e4e4e4")
+define oldMan = Character("Old Man?", what_color="#e4e4e4")
 
 label chapter4_Shrine:  
     scene shrine night
@@ -42,7 +42,7 @@ label chapter4_Park:
     p "It's making its way out of the fields!"
     "As the pursuit intensifies in the streets, we are lead to the santuary of T. Shrine."
     $ identityKnown = True
-    "What lies ahead - an old man, silently watching the moon."
+    "What lies ahead - {color=#fff238}an old man{/color}, silently watching the Moon."
     jump inquisitorEncounter
 
 label inquisitorEncounter:
@@ -51,14 +51,14 @@ label inquisitorEncounter:
     k "Hold it boss!"
     k "You're coming with me! We need you back!"
     oldMan "Boss?"
-    k "Enough bluffing boss! You need to come back, we need you!"
+    k "Enough bluffing boss!"
     oldMan "..."
     "The conversation is not going anywhere, I need to think of something."
     $ renpy.force_autosave(True, True)
     call questioning1 from _call_questioning1
     show inky norm with fade
     pk "!?"
-    "The old man morphs into a dark blob with two pointy ears, resembling a rabbit."
+    "The old man morphs into a dark blob with two pointy ears, resembling a black rabbit."
     stop music fadeout 1.0
     scene black with fade
     # good end
@@ -66,18 +66,18 @@ label inquisitorEncounter:
 
 
 menu questioning1:
-    "What brings you two here?"
+    "{color=#fff238}What brings you two here?{/color}"
     "Let Kaguya handle it.":
         k "Say something boss!"
         k "You need to come with me or our people are going to die!"
         jump inquisitorReject 
     "We heard about a suspicious individual...":
-        oldMan "Suspicious? What about me is suspicious?"
+        oldMan "Suspicious?"
         if talesOfSacrifce:
-            p "Does \"Sacrifice\" come to mind?"
+            p "Does {color=#ff5938}\"Sacrifice\"{/color} come to mind?"
             oldMan "..."
             oldMan "Where did you hear that from?"
-            p "What is this \"Sacrifice\"? What do you want from all this?"
+            p "What is this about? What do you want from all this?"
             return
         else:
             p "An old man like you wouldn't come here at midnight."
@@ -100,8 +100,9 @@ menu questioning1:
         "He laughs."
         scene shrine night
         with vpunch
-        oldMan "Ahaha! It's okay, young one.
-        I like your style! The idiot girl next to you would help to learn your manners."    
+        oldMan """Ahaha! It's okay, young one.
+        
+        I like your style! The idiot girl next to you would help to learn your manners."""
         p "?"
         oldMan "We can stop playing dumb now."
         return 
@@ -121,9 +122,9 @@ label inquisitorFail:
         zoom 1.5 
     with vpunch
     show kag surprise
-    "With a blink of an eye,"
+    "With a blink of an eye-"
     p "What!?"
-    "a tremendous force knocks me off balance."
+    "A tremendous force knocks me off balance."
     show kag shadow with fade
     "Following by a pillar of blinding light at the temple, I hit the stone tiles in astonishment."
     scene black with fade
@@ -140,21 +141,21 @@ label inquisitorFail:
     jump end1
 # Head to Lost
 label chapter4_Store:
-    scene shop with dissolve
+    scene shop night with dissolve
     show kag awkward
     "We arrive at the convenience store."
-    k "I don't see anything suspicious here."
+    k "I don't see anyone of interest here."
     p "Let's not be too impatient."
-    "I enter the store, Kaguya stays outside to look out for the Inquisitor."
+    "I enter the store, Kaguya stays outside to look out for anything suspicious."
     "Come to think of it, I'm getting a bit peckish, I hope they haven't thrown away the sandwiches yet."
     scene sky night with dissolve
-    "Hours went by, no one of interest."
-    "Worst of all, it began to drizzle."
+    "Hours go by, no one of interest."
+    "Worst of all, it begins to rain."
+    pause 0.5
     #rain sfx
-    show kag awkward
     clerk "You two still here?"
     "The store clerk came out the back door, probably coming off his shift."
-    clerk "It's , you're welcome to wait inside."
+    clerk "Ah it's raining. You're welcome to wait inside."
     p "Thanks for the offer, we'll go in a minute."
     scene black with dissolve
     "In the end, no one, except a few night owls, came into the store."
@@ -178,7 +179,7 @@ label chapter4_Room:
     p "zzz..."
     #zoom in
     show kag awkward
-    k "Hey, can we save bed time for a bit later? We have a rabbit to catch!"
+    k "Hey, can we save bed time for a bit later? We have a boss to catch!"
     #zoom in more
     "I didn't take long to fall asleep, despite the incessant shaking from an agitated girl."
     #zoom in more

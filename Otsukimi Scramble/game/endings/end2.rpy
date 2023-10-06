@@ -7,15 +7,12 @@ label end2:
     inquisitor "Keep this a secret, will you?"
     pause 1.0
     menu:
-        "Okay?":
-            inquisitor "Then it's settled, make sure you do not break our promise."
         "Yes":
             inquisitor "Then it's settled, make sure you do not break our promise."
     $ MakeDirectory("secrets")
     $ MakeTextFile("secrets/promise.txt", promise)
     $ persistent.promise = True
-    scene shrine night: 
-        zoom 3.0 
+    scene shrine night
     with fade
     inquisitor "Let's go Kaguya."
     show kag surprise
@@ -39,8 +36,7 @@ label end2:
 # secret route unlock scene
 label end2x:
     stop music fadeout 1.0
-    scene shrine night:
-        zoom 3.0
+    scene shrine night
     with fade
     pause 1.0
     p "So this is goodbye."

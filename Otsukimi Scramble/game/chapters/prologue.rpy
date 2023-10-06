@@ -3,7 +3,7 @@ define k = Character("Kaguya",who_color = "#ffb1a3" ,what_color="#ffdfd9")
 # TODO: Flesh out dialogue in prologue
 label playerName:
     python:
-        povName = renpy.input("What is your name?", length=16)
+        povName = renpy.input("What is your {color=#fff238}name{/color}?", length=16)
         povName = povName.strip()
         if not povName:
             povName = "Name"
