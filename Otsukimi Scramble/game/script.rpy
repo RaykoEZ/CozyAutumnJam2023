@@ -15,6 +15,7 @@ label start:
         inviteCheck = CheckTextInFile("moon/" + inviteFilename, persistent.secretPlayerName)           
         secretCheck = inviteCheck and povName == persistent.secretPlayerName
     if secretCheck:
+        pause 1.0
         jump chapter1x
     else:            
         # These display lines of dialogue.
@@ -33,16 +34,18 @@ label start:
     stop music fadeout 0.5
     stop rain fadeout 1.0
     pause 1.0
-    $ PlayBGM("bgm_tense", fadeIn = 1.0)
     scene sky night with fade
     # Night begins, need to head to final destination
     "The raining sky clears up."
     "With the sun set, we don't have much time left."
     # panic/worry/frown
     show kag surprise
+    pause 1.0
+    show monologueFilter
     "Kaguya is getting restless, we need to make a move."
+    hide monologueFilter
+    $ PlayBGM("bgm_tense", vol = 0.1, fadeIn = 10)
     k "C'mon! Do we know where to find this bugger?"
-    stop music fadeout 1.0
     jump chooseDestination
     # This ends the game.
     return
@@ -86,38 +89,36 @@ menu confirmDestination:
 
 # list clues obtained for decision making
 label thinking:
+    show monologueFilter with fade
     "To sum up what we currently know:"
     
-    """We have an idea of the true Identity of the Inquisitor - a cunning, shape-shifting black rabbit. 
-
-    They must be intimately involved in the recent deacades' of Moon Festivals."""
+    "We have an idea of the true Identity of the Inquisitor - {color=#fff238}a cunning, shape-shifting black rabbit.{/color}"
     # identity clue check
     if identityKnown:       
-        """A peculiar elderly man is seen frequenting the shrine on Moon Festival nights.
+        """{color=#fff238}A peculiar elderly man is seen frequenting the shrine at night recently.{/color}
         
         Perhaps he has something important to do at the shrine? What could it be?"""
     else:
-        """But we don't know the identity of Inquisitor, but we must be near them right now, though it's only a hunch.
+        """But {color=#fff238}we don't know the identity of Inquisitor{/color}, but we must be near them right now, though it's only a hunch.
         """
     # location check
     if locationKnown:
-        """There is a good chance of our target appearing at the shrine again.
+        """There is a good chance of {color=#fff238}our target appearing at the shrine again{/color}.
     
-        Also, people have seen strange shadows lurking near the Park fields at night. It may be worth a shot to investigate there. 
+        Also, {color=#fff238}people have seen strange shadows lurking near the Park fields at night{/color}. It may be worth a shot to investigate there. 
         """
     # trap check
     if needSilverGrass:
         """
-        This year's Moon Festival is cancelled due to poor weather, in addition to the sudden devestation of our silver-grass harvest.    
-    
-        Luckily, I have some silver-grass as decoration. It might come in handy when we confront this Inquisitor.
+        This year's Moon Festival is likely cancelled due to poor weather, and the sudden devestation of our silver-grass harvest.
         """
 
     # trap warning
     if needSilverGrass and (talesOfSacrifce):
         """
-        However, we lack the full picture of the Inquisitor's intentions, we must treead carefully. 
-        """     
+        However, we lack the full picture of the Inquisitor's intentions, {color=#fff238}we must tread carefully{/color}. 
+        """
+    hide monologueFilter with fade 
     return
 
 label ThanksForPlaying:

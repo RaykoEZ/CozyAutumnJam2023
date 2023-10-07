@@ -3,6 +3,7 @@ label end3:
     # secret ending
     scene clear sky
     with fade
+    show monologueFilter
     "She frequently drops by, dragging me on her travels."
     "Though unwilling at first, I eventually succumb to her enthusiasm."
     "From monuments to nature, we journey across the country, forging unforgettable memories."  

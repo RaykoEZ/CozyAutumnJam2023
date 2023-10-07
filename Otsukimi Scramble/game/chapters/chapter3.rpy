@@ -24,7 +24,9 @@ menu chapter3_ChooseLocation:
         show kag surprise
         k "Inta-net?"
         "Ignoring her questioning gaze, I gesture her to follow my lead."
+        show monologueFilter
         "A break from being outside all day, the timing cannot be better!"
+        hide monologueFilter
         p "Let's go back to my place, we have little time to waste!"
         k "O-okay!"
         scene black with fade
@@ -33,13 +35,15 @@ menu chapter3_ChooseLocation:
 # We eat some food, talk to clerk, get out, get rained on, snooze under shelter
 label chapter3_shop:
     scene shop with fade
-    $ PlayBGM("bgm_calm", vol = 0.1)
+    $ PlayBGM("bgm_calm")
     "We arrived at the convenience store."
-    play shopDoor "audio/store open.mp3"
+    play shopDoor ["audio/store open.mp3", "<silence 1.0>", "audio/store close.mp3"]
     play shopBell "audio/store bell.mp3"
+    show monologueFilter
     "Unsurprisingly, the place isn't busy in the evenings."
+    hide monologueFilter
+
     p "This your first time in here?"
-    "I asked Kaguya."
     k "Wow! So this is what a store looks like!"
     k "Sorry, didn't know what I would expected, we don't have stores at our place."
     p "So, what food can you eat?"
@@ -71,13 +75,18 @@ label chapter3_shop:
             p "Sheesh..."
             $ affinity -= 1
         "Fried Chicken":
-            """I shall introduce her to the world of {color=#ff7a38}{b}Convenience Store Hot Foods{/b}{/color}!
+            scene shop with hpunch
+            show monologueFilter
+            """I shall introduce her to the world of {color=#ff7a38}{b}Convenience Store Hot Foods!{/b}{/color}
 
             This place has one of the best convenience store fried chickens in town! 
 
-            There is no way she can resist this {color=#ff7a38}crispy, juicy, spicy package of umami{/color}!"""
+            There is no way she can resist this {color=#ff7a38}crispy, juicy, spicy package of umami{/color}!"""           
             scene shop with vpunch
-            "{b}She will bow down and submit to the power and the culinary arts of this planet{/b}!"
+            show monologueFilter
+            "{b}{color=#ff7a38}She will bow down and submit to the culinary arts of our planet!{/color}{/b}"
+            hide monologueFilter
+
             show kag surprise with easeinleft
             k "..."
             k "!!!"
@@ -96,7 +105,9 @@ label chapter3_shop:
     if sayuSecretSolved :
         pause 0.5
         p "{color=#fff238}Maybe anyone asking for anything weird{/color}?"
+    show monologueFilter
     "It's worth a try to ask anyone about the Inquisitor."
+    hide monologueFilter
     clerk "?"
     clerk "Oh hehe~ You'd be surprised what I've seen."
     stop music fadeout 2
@@ -115,9 +126,8 @@ label chapter3_shop:
     else:
         clerk "I don't think there's anything out of the ordinary today."
         p "I see, thanks."
-    play shopDoor "audio/store close.mp3"
+    play shopDoor ["audio/store open.mp3", "<silence 1.0>", "audio/store close.mp3"]
     play shopBell "audio/store bell.mp3"
-    pause 1.0
     scene black with fade
     call chapter3_rain from _call_chapter3_rain
     return
@@ -127,37 +137,41 @@ label chapter3_rain:
     "After a few exchanges of encouragement, we continue our search."
     "And suddenly..."
     scene rain sky with dissolve
-    play rain "audio/rain1.mp3" fadein 2.0
+    play rain "audio/rain.ogg" volume 2
     p "Shoot! I didn't bring my umbrella."
     k "Quick! Lat's stop by the roof there!"
+    play sound "audio/run.mp3"
     scene black with fade
     "As we wait for the rain to subside, exhaustion overtakes my mind."
-    scene rain sky with dissolve
+    scene rain shelter with dissolve
     p "*Yawn*~"
     "The gentle autumn drizzle woos my mind as I close my eyes to relax as much as I am able."
     "Soon enough, I fell asleep."
     p "zzz"
     k "You'll catch a cold if you sleep here."
     k "Hello?"
-    play sound "audio/phone ring.mp3" volume 0.7
+    #phone rings
+    play sound ["audio/phone ring.mp3", "<silence 0.5>"] loop volume 1.5
     k "Ah!?"
-    scene rain sky with hpunch
+    scene rain shelter with hpunch
     k "What the heck is this thing?"
+    stop sound
+    play sound "audio/phone beep0.mp3" volume 1.5
     scene black with dissolve
     pause 1.0
     stop sound
-    scene rain sky with dissolve
-    "Hey..."
+    scene rain shelter with dissolve
+    k "Hey..."
     p "zzz"
-    scene rain sky with hpunch
-    "Wake up!"
+    scene rain shelter with hpunch
+    k "{b}Wake up!{/b}"
     p "..."
-    scene rain sky with vpunch
+    scene rain shelter with vpunch
     play sound "audio/outburst.mp3" volume 0.3
-    "Hey! [povName]! Get up!"
+    k "{b}Hey! [povName]! Get up!{/b}"
     p "...Huh?"
     "Barely awake after Kaguya's rigorous shaking, I stare blankly at the phone in her hand."
-    k "A voice just came out of this thing!"
+    k "A voice came out of this thing!"
     p "Hold on a sec! Gimme my phone back!"
     "I check my call record and breath a sign of relief - it was Sayu."
     p "Why did she call me? Did she say something to you?"
@@ -167,17 +181,18 @@ label chapter3_rain:
     "Deep in thought, she ignores my snarky remark."
     k "Maybe it's a clue to where boss lives?"
     p "Hmm...Can't be sure yet, but it's better than nothing."
+    show monologueFilter
     "In that case, we should check that place out soon, it's almost nighttime."
+    hide monologueFilter
     # phone rings, new tip
     $ locationKnown = True   
     return
 # We snooze on bed, kaguya annoys us, do some research on PC
 label chapter3_room:
-    scene room with fade
+    scene room rain with fade
     play shopDoor "audio/store open.mp3"
-    play rain "audio/rain1.mp3" fadein 2.0
-    $ PlayBGM("bgm_calm", vol = 0.2)
-    
+    play rain "audio/rain1.ogg" volume 2
+    $ PlayBGM("bgm_calm")   
     "Just as we arrived at the dorm, it started to rain."
     p "Woo, just in time~"
     "I reach for the fridge and grab some snacks and drinks."
@@ -188,7 +203,6 @@ label chapter3_room:
     though most of the articles are unrelated..."""
     stop music fadeout 1.0
     p "{color=#ff7a38}\"Mysterious Shadows at A. Park\"{/color}? Hmm."
-    $ PlayBGM("bgm_tense", fadeIn = 1.0)
     "The post describes a mysterious man wandering around A. Park's field."
     p "Interesting, this is where we were this evening."
     "The accompanied photos are too blurry to confirm his appearances."

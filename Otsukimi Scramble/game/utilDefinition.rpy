@@ -1,12 +1,12 @@
 #set all python init variables here
 init python:
     import os
-    renpy.music.register_channel("shopDoor", "sfx")
-    renpy.music.register_channel("shopBell", "sfx")
-    renpy.music.register_channel("siren", "sfx")
-    renpy.music.register_channel("wind", "sfx", loop = True)
-    renpy.music.register_channel("rain", "sfx", loop = True)
-
+    renpy.music.register_channel("shopDoor", "sfx", loop = False)
+    renpy.music.register_channel("shopBell", "sfx", loop = False)
+    renpy.music.register_channel("siren", "sfx", loop = False)
+    renpy.music.register_channel("wind", "sfx", loop = False)
+    renpy.music.register_channel("rain", "sfx", loop = True, tight = True)
+    renpy.music.set_volume(0.3)
     def PlayBGM(name, isLoop = True, vol = 0.3, fadeIn = 0.5):
         renpy.music.play(filenames = "audio/"+name+".mp3", loop = isLoop, fadein = fadeIn, relative_volume = vol)
     # make 
@@ -27,6 +27,7 @@ init python:
                 return checkContent in f.read()
         else:
             return False
+image monologueFilter = "#00000088"
 # puzzles for chapter 2
 define secret_sayu = "secrets/sayu.txt"
 define answer_sayu = "FATTY TUNAS"

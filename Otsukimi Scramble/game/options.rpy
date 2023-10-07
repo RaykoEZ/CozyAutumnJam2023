@@ -13,6 +13,8 @@
 ## The _() surrounding the string marks it as eligible for translation.
 
 define config.name = _("Otsukimi Scramble")
+define config.default_music_volume = 0.6
+define config.default_sfx_volume = 0.6
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
@@ -154,7 +156,7 @@ define config.save_directory = "OtsukimiScramble-1695470099"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/scramble.png"
 
 
 ## Build configuration #########################################################

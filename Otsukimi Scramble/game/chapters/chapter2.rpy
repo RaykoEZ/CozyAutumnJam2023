@@ -7,21 +7,24 @@ label chapter2:
     "{color=#fff238}T. Shrine{/color}"    
     scene shrine hill evening
     with dissolve
-    "Once we safely reached the foot of the stairs leading to the shrine, I breath a sign of relief."
-    play wind "audio/wind.mp3" fadein 2 fadeout 2
+    show monologueFilter
+    "Once we safely reached the foot of the stairs leading to the shrine, I breath a sign of relief."  
+    play wind "audio/wind.mp3" fadein 2 fadeout 3
     "The soft rustling of fallen leaves and swaying branches bring me with a familiar feeling of tranquility."
-    
+    hide monologueFilter
     p "We should be safe around here."
     $ PlayBGM("bgm_calm")
     "The Moon Festival takes place here tonight, so we should be able to blend in with the preparation staff."
     show kag norm   
     k "Say, I still don't know your name."
+    show monologueFilter
     """She's surprisingly strong for her petite figure.
     
     This is not good, the commotion at the field would have attracted the police by now.
     
     I would be in deep trouble if I were to associate with the {color=#fff238}perpetrator{/color} of that massive hole in the ground.
     """
+    hide monologueFilter
     stop music fadeout 0.3
     stop wind fadeout 0.3
     p "Now if you'll excuse me, I need to go."
@@ -30,7 +33,10 @@ label chapter2:
     with vpunch
     k "Hey!"
     # surprise
-    show kag angry with hpunch
+    show kag angry:
+        zoom 1.1
+    with hpunch
+    play sound "<from 0 to 2.5>audio/grip.mp3" fadein 1 fadeout 1
     p "Aargh!"
     "My neck jerks back as she grips onto the back of my shirt collar and pulls me back."
     call decideToHelp from _call_decideToHelp
@@ -59,7 +65,9 @@ label chapter2_1:
     p "Fine, I'll help, but don't do anything reckless, the police are probably on edge after what you did."
     p "My name is {color=#fff238}[povName]{/color}."
     # atl animation for excitement
-    show kag shake with vpunch
+    show kag shake:
+        zoom 1.0
+    with vpunch
     k "Yes Mr. [povName]! Thank you!"
     "Kaguya rigorously shakes my hands in excitement."
     p "[povName] is fine, now stop tearing my limbs apart!"
@@ -67,8 +75,8 @@ label chapter2_1:
     k "Ah Sorry about that~"
     "She sticks her tongue out mischievously."
     p "Hmph, so, what help do you need?"
-    show kag norm
     scene black with fade
+    show kag norm
     pause 1.5
     k "I am trying to {color=#fff238}find someone{/color},"
     k "He's the {color=#fff238}Boss of the Moon{/color}! We call him the {color=#fff238}Inquisitor{/color}!"
@@ -93,29 +101,31 @@ label chapter2_1:
     show kag surprise
     pause 0.5
     show kag norm
-    k """He's a forceful-yet-charming boss, a strong Moon Rabbit. 
-    
-    Maybe one of the {b}muscular highschoolers with mysterious superpowers{/b}! 
-    """
+    k "He's a forceful-yet-charming boss, a strong Moon Rabbit." 
+    show kag happy
+    k "Maybe one of the {b}muscular highschoolers with mysterious superpowers{/b}!"
     p "Uh-I'm afraid I've no clue where to start."
+    show monologueFilter
     "This guy can even be on the other end of the world for all I know."
     "Not to mention the time constraint."
     "I'm already starting to consider the futility of her ordeal."
+    hide monologueFilter
     # Option on what to do next
     show kag awkward with hpunch
     "Silence ensues as Kaguya leans against the railings by the stone steps, deep in thought."
     k "Hmm..."
     show kag angry
     k "..."
+    show monologueFilter
     """Regardless, {color=#fff238}I still need to report our silver-grass situation to the organizers at the shrine{/color} anyway.
 
     There mght be some clues to the identity of this {color=#fff238}Inquisitor{/color}."""
+    hide monologueFilter
     p "We can ask the shrine workers. It's better than standing around here."
     show kag norm
     "She snaps out of her frustration and nods eagerly."
     k "Let's! You lead the way!"
     hide kag with fade
-    scene black with fade
     call chapter2_shrine from _call_chapter2_shrine        
     "As we head down the shrine path, many questions float in my mind."
     scene shrine hill evening
@@ -158,16 +168,18 @@ define elder = Character("Elderly Voice")
 # go to shrine to ask for info
 label chapter2_shrine:
     scene shrine hill evening with fade
+    show monologueFilter
     """
     Lucky for her, I'm an acquaintance of the workers in this shrine and a regular at the shrine. 
     
     A few of them should be staying at the dwelling behind of the sanctuary.
     """
-    scene black with fade
     "As we arrive at the entrance of the shrine, we are greeted by {color=#fff238}Sayu{/color}, a shrine maiden." 
+    hide monologueFilter
     sayu "[povName]? Hey [povName]!"
     scene shrine evening
     with fade
+    show monologueFilter
     """Sayu is the granddaughter of the shrine master. 
     
     She helps out with daily tasks at the shrine on weekends.
@@ -179,12 +191,13 @@ label chapter2_shrine:
 
     On one of my later visits, I laid witness to her smuggling dinner to share with some of the kittens near the shrine.
     """
+    hide monologueFilter
     p "As for the silver-grass - not so hot, I'm afraid. There was a fire at the fields just now."
     sayu "Ah, that's too ba-"
     scene shrine evening
     with vpunch
     play sound "audio/outburst.mp3" volume 0.5
-    sayu "Wait what!? So that's what the loud noise was earlier?"
+    sayu "{b}Wait what!?{/b} So that's what the loud noise was earlier?"
     p "I saw something landed there, next thing I knew - smoke and fire."
     p "It ruined our supplies for the festival."
     k "Ahaha..."
@@ -211,11 +224,12 @@ label chapter2_shrine:
         sayu "Coming!"
         sayu "Dinner's almost ready, wanna join?"
         p "Thanks for the offer, but we're in a hurry. Say hi for me."
-        "Sayu nods politely and bids us farewell."
+        "Sayu nods politely and bids us farewell."       
         show kag norm with fade
         k "Hmm..."
         p "Alright, let's go ask elsewhere."
         k "Do you think {color=#fff238}the girl might be hiding something{/color}?"
+        pause 1.0
         p "?"
         p "What makes you think that?"
         k "A hunch."
@@ -224,17 +238,19 @@ label chapter2_shrine:
         "I wouldn't be surprise Sayu's hiding something, but it's probably nothing important in this case."
         show kag angry
         p "That was a joke."
+        scene black with fade
         show kag norm
         k "But I'd prefer you {color=#fff238}think of something outside the box{/color}," 
         k "{color=#fff238}there might be ways to tease out some hidden information from a person{/color}."
-        p "Hmm...sorry to disappoint, but I'm not a mind reader."
+        pause 2.0
+        p "Hmm...sorry to disappoint, but I'm no mind reader."
     return
 define pk = Character("Kaguya & I")
 
 label sayuSecret:
     show kag surprise
     sayu "{color=#ff5938}Sacrifice{/color}..."
-    $ PlayBGM("bgm_tense")
+    $ PlayBGM("bgm_tense", fadeIn = 10.0, vol = 0.1)
     p "Sayu?"
     elder "Sayu! Time to finish up and eat!"
     sayu "Oh! Coming!"

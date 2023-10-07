@@ -1,4 +1,6 @@
 label end2:
+    scene shrine night
+    with fade
     inquisitor "..."
     $ PlayBGM("main_theme")
     "The Moon Rabbit whispers in my ear."
@@ -12,8 +14,6 @@ label end2:
     $ MakeDirectory("secrets")
     $ MakeTextFile("secrets/promise.txt", promise)
     $ persistent.promise = True
-    scene shrine night
-    with fade
     inquisitor "Let's go Kaguya."
     show kag surprise
     k "?"
@@ -21,6 +21,7 @@ label end2:
     k "Y-Yessir!"
     "Kaguya turns to me, waving her hands."
     k "Thank you for your help!"
+    play sound "audio/lightPillar.mp3" volume 1.5
     "A great pillar of light emanates from behind her, soaring towards the moon."
     # do ending stuff here
     scene end2 with fade
@@ -43,7 +44,9 @@ label end2x:
     play sound "audio/confuse.mp3"
     "Huh?"
     ufo "Testing, testing, can you hear me?"
+    show monologueFilter
     "A familiar voice echoes in my head."
+    hide monologueFilter
     p "Kaguya?"
     ufo "It seems we still have many things to experience." 
     ufo "I leave the preparations to you." 

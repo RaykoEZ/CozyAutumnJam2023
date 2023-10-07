@@ -1,7 +1,9 @@
 label end1:
     scene black with dissolve
-    play sound "audio/rain.mp3" fadein 1.0 fadeout 1.0
+    play rain "audio/rain.ogg" volume 1.5
     if refuseToHelp:
+        scene room rain with dissolve
+        show monologueFilter
         """An uneventful night goes by.
         
         Focusing on the gentle pattering of the rain, 
@@ -9,13 +11,17 @@ label end1:
         worn out by the events I encountered today, 
         
         I soon drift off into sleep."""
-    scene field evening
+    scene field evening with fade
+    stop rain fadeout 1.0
     with dissolve
+    $ PlayBGM("bgm_calm", vol = 0.1, fadeIn = 10)
+    show monologueFilter
     "A few days later, the police was at my doors."
     "Kaguya and I had left footprints at our first meeting; it was no surprise they would ask questions."
     "Fortunately, I was soon released as the police failed to find my \"accomplice\"."
     scene clear sky
     with dissolve
+    show monologueFilter
     "I haven't seen Kaguya after the night we'd gone our separate ways."
     """
     Day by day,
@@ -26,8 +32,11 @@ label end1:
     show kag shadow with dissolve
     "The memories of that day fades away."
     hide kag
+    pause 3
+    stop music
     scene end1
     p "Huh?"
+    show monologueFilter
     "That hood!"
     "Could it be her?!"
     scene end1: 
@@ -35,7 +44,7 @@ label end1:
     with dissolve
     "As I close my distance between the girl, whose gaze fixed towards the autumn evening sky,"  
 
-    p "{color=#fff238}Kaguya{/color}."
+    p "{color=#fff238}Kaguya.{/color}"
 
     # bad end, depend on affinity, slightly different sequence
     if affinity > 0:
@@ -46,6 +55,7 @@ label end1:
 
 label end1_bad:
     scene end1
+    show monologueFilter
     "I muttered to myself, without drawing the girl's attention."   
 
     "Why is she here?"
@@ -53,6 +63,7 @@ label end1_bad:
     "What has she been doing since then?"
 
     "But,"
+    hide monologueFilter
     scene black with dissolve
     "I shake off the thoughts and rush past the girl."
     "I have no business with her anymore."
@@ -73,9 +84,8 @@ label end1_better:
     k "And...I'll pay for the food this time~"
     p "..."
     # grey overlay for monologue
-    """There were too many questions I wish to ask her.
-    
-    Yet here she is, in front of me."""
+    show monologueFilter
+    "There were too many questions I wish to ask her."
     #show ending text
     scene black with dissolve
     "Ending 1.1 - Acceptance"
