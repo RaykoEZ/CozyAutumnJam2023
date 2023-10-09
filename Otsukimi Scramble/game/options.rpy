@@ -13,7 +13,8 @@
 ## The _() surrounding the string marks it as eligible for translation.
 
 define config.name = _("Otsukimi Scramble")
-
+define config.default_music_volume = 0.6
+define config.default_sfx_volume = 0.6
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
@@ -62,7 +63,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "main_theme.mp3"
 
 
 ## Transitions #################################################################
@@ -75,7 +76,12 @@ define config.has_voice = True
 
 define config.enter_transition = dissolve
 define config.exit_transition = dissolve
-
+#Auto save enabled
+define config.autosave_frequency = 0
+define config.has_autosave = True
+define config.autosave_on_choice = False
+define config.autosave_on_quit = False
+define config.autosave_on_input = False
 
 ## Between screens of the game menu.
 
@@ -120,7 +126,7 @@ define config.window_hide_transition = Dissolve(.2)
 ## Controls the default text speed. The default, 0, is infinite, while any other
 ## number is the number of characters per second to type out.
 
-default preferences.text_cps = 0
+default preferences.text_cps = 60
 
 
 ## The default auto-forward delay. Larger numbers lead to longer waits, with 0
@@ -150,7 +156,7 @@ define config.save_directory = "OtsukimiScramble-1695470099"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/scramble.png"
 
 
 ## Build configuration #########################################################
