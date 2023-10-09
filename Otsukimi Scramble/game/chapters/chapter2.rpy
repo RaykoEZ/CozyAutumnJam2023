@@ -241,9 +241,12 @@ label chapter2_shrine:
         scene black with fade
         show kag norm
         k "But I'd prefer you {color=#fff238}think of something outside the box{/color}," 
+        pause 1.5
         k "{color=#fff238}there might be ways to tease out some hidden information from a person{/color}."
         pause 2.0
         p "Hmm...sorry to disappoint, but I'm no mind reader."
+        "There is no way for {color=#ff5938}me{/color} to pry Sayu for her secret." 
+        "We all have our own little secrets to hide after all."
     return
 define pk = Character("Kaguya & I")
 
@@ -295,6 +298,7 @@ label sayuSecret:
     # clue triggers
     $ witnessedInquisitor = True
     $ talesOfSacrifce = True
+    $ sacrificeClueText = "Sacrifice"
     return
 #refuse to help kaguya
 label chapter2_2:

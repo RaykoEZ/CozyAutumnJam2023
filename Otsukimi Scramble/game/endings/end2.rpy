@@ -49,7 +49,8 @@ label end2x:
     hide monologueFilter
     p "Kaguya?"
     ufo "It seems we still have many things to experience." 
-    ufo "I leave the preparations to you." 
+    ufo "{color=#fff238}I leave the preparations to you.{/color}" 
+    pause 2.0
     ufo "We will meet again [povName]!"
     scene black with fade
     # create moon and invite

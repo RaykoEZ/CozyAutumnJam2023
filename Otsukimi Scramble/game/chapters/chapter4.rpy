@@ -57,7 +57,7 @@ label inquisitorEncounter:
     k "Enough bluffing boss!"
     oldMan "..."
     show monologueFilter
-    "The conversation is not going anywhere, I need to think of something."
+    "The is not going anywhere, I need to think of something."
     hide monologueFilter
     $ renpy.force_autosave(True, True)
     call questioning1 from _call_questioning1
@@ -71,27 +71,20 @@ label inquisitorEncounter:
 
 
 menu questioning1:
-    "{color=#fff238}What brings you two here?{/color}"
+    "{color=#fff238}I need to say something before the conversation goes south.{/color}"
     "Let Kaguya handle it.":
         k "Say something boss!"
         k "You need to come with me or our people are going to die!"
-        jump inquisitorReject 
-    "We heard about a suspicious individual...":
-        oldMan "Suspicious?"
-        if talesOfSacrifce:
-            p "Does {color=#ff5938}\"Sacrifice\"{/color} come to mind?"
-            oldMan "..."
-            oldMan "Where did you hear that from?"
-            p "What is this about? What do you want from all this?"
-            return
-        else:
-            p "An old man like you wouldn't come here at midnight."
-            p "I may not know what you are after bu-"
-            show inky angry with vpunch
-            play sound "audio/outburst.mp3" fadein 1.0
-            inquisitor "None of your business! I go where I want!"
-            show inky angry with vpunch
-            play sound "audio/outburst.mp3" fadein 1.0
+        jump inquisitorReject       
+
+    "An old man like you wouldn't come here at midnight.":
+        p "An old man like you wouldn't come here at midnight."
+        p "I may not know what you are after bu-"
+        show inky angry with vpunch
+        play sound "audio/outburst.mp3" fadein 1.0
+        inquisitor "None of your business! I go where I want!"
+        show inky angry with vpunch
+        play sound "audio/outburst.mp3" fadein 1.0
         jump inquisitorReject 
     "Bluff my way through this":
         p "Hold it Kaguya."
@@ -110,7 +103,13 @@ menu questioning1:
         I like your style! The idiot girl next to you would help to learn your manners."""
         p "?"
         oldMan "We can stop playing dumb now."
-        return 
+        return
+    "Does {color=#ff5938}\"[sacrificeClueText]\"{/color} come to mind?" if talesOfSacrifce:
+        pause 0.5
+        oldMan "..."
+        oldMan "Where did you hear that from?"
+        p "What is this about? What do you want from all this?"
+        return
 
 # When you fail the questioning
 label inquisitorReject:

@@ -103,7 +103,7 @@ label chapter3_shop:
     p "Cool thanks, say, how's your shift today? Anyone interesting coming in yet?"
     # suggestion
     if sayuSecretSolved :
-        pause 0.5
+        pause 1.0
         p "{color=#fff238}Maybe anyone asking for anything weird{/color}?"
     show monologueFilter
     "It's worth a try to ask anyone about the Inquisitor."
@@ -140,7 +140,7 @@ label chapter3_rain:
     play rain "audio/rain.ogg" volume 2
     p "Shoot! I didn't bring my umbrella."
     k "Quick! Lat's stop by the roof there!"
-    play sound "audio/run.mp3"
+    play sound "<from 0 to 3.0>audio/run.mp3"
     scene black with fade
     "As we wait for the rain to subside, exhaustion overtakes my mind."
     scene rain shelter with dissolve

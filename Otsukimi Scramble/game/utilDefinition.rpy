@@ -7,6 +7,8 @@ init python:
     renpy.music.register_channel("wind", "sfx", loop = False)
     renpy.music.register_channel("rain", "sfx", loop = True, tight = True)
     renpy.music.set_volume(0.3)
+    config.menu_include_disabled = True
+
     def PlayBGM(name, isLoop = True, vol = 0.3, fadeIn = 0.5):
         renpy.music.play(filenames = "audio/"+name+".mp3", loop = isLoop, fadein = fadeIn, relative_volume = vol)
     # make 
@@ -64,6 +66,7 @@ default witnessedInquisitor = False
 default locationKnown = False
 # tales of sacrifice, needed for secret unlock
 default talesOfSacrifce = False
+default sacrificeClueText = "???"
 # check for secret ending unlock
 default needSilverGrass = False
 
